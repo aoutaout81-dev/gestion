@@ -18,10 +18,12 @@ class HelpCommand(commands.Cog):
                 await self._send_admin_help(ctx)
             elif category in ["mod", "moderation", "modération"]:
                 await self._send_moderation_help(ctx)
+            elif category in ["role", "roles", "rôle", "rôles"]:
+                await self._send_roles_help(ctx)
             else:
                 embed = discord.Embed(
                     title="❌ Catégorie introuvable",
-                    description="Catégories disponibles : `administration`, `moderation`",
+                    description="Catégories disponibles : `administration`, `moderation`, `roles`",
                     color=self.bot.config.error_color
                 )
                 await ctx.send(embed=embed)
@@ -43,6 +45,12 @@ class HelpCommand(commands.Cog):
         embed.add_field(
             name="🔨 Modération", 
             value="`+help moderation` - Commandes de modération des membres",
+            inline=False
+        )
+        
+        embed.add_field(
+            name="👑 Gestion des Rôles", 
+            value="`+help roles` - Commandes de gestion des rôles",
             inline=False
         )
         
@@ -123,6 +131,45 @@ class HelpCommand(commands.Cog):
         )
         
         embed.set_footer(text="💡 Vous pouvez utiliser les noms d'utilisateurs au lieu de les mentionner")
+        
+        await ctx.send(embed=embed)
+    
+    async def _send_roles_help(self, ctx):
+        """Envoie l'aide pour les commandes de gestion des rôles"""
+        embed = discord.Embed(
+            title="👑 Commandes de Gestion des Rôles",
+            description="Gestion complète des rôles du serveur",
+            color=self.bot.config.embed_color
+        )
+        
+        commands_list = [
+            ("addrole", "Ajouter un rôle à un membre", "`+addrole <membre> <rôle>`"),
+            ("delrole", "Retirer un rôle d'un membre", "`+delrole <membre> <rôle>`"),
+            ("createrole", "Créer un nouveau rôle", "`+createrole <nom> [couleur] [permissions]`"),
+            ("deleterole", "Supprimer un rôle", "`+deleterole <rôle>`"),
+            ("rolestats", "Statistiques d'un rôle", "`+rolestats <rôle>`")
+        ]
+        
+        for name, desc, usage in commands_list:
+            embed.add_field(
+                name=f"`{name}`",
+                value=f"{desc}\n{usage}",
+                inline=False
+            )
+        
+        embed.add_field(
+            name="🎨 Couleurs disponibles",
+            value="`rouge`, `bleu`, `vert`, `jaune`, `orange`, `violet`, `rose`, `cyan`, `noir`, `blanc` ou `#RRGGBB`",
+            inline=False
+        )
+        
+        embed.add_field(
+            name="🔐 Permissions spéciales",
+            value="`admin` = toutes les permissions\n`mod` = permissions de modération",
+            inline=False
+        )
+        
+        embed.set_footer(text="💡 Vous pouvez utiliser les noms de rôles et membres directement")
         
         await ctx.send(embed=embed)
 

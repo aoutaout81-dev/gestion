@@ -39,6 +39,7 @@ class CrowBot(commands.Bot):
         cogs = [
             'cogs.administration',
             'cogs.moderation',
+            'cogs.roles',
             'cogs.help'
         ]
         
