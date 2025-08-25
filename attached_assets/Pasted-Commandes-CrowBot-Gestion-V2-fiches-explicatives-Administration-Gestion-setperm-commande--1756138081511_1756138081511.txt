@@ -1,0 +1,524 @@
+Commandes CrowBot (Gestion V2) – fiches explicatives
+🎛️ Administration & Gestion
+setperm <commande> <@role>
+
+Description : Définit le niveau de permission nécessaire pour utiliser la commande spécifiée. Cette commande permet d’autoriser un rôle à exécuter une commande du bot.
+
+Arguments :
+
+<commande> (texte) : le nom de la commande à configurer (par exemple ban, kick, slowmode, etc.).
+
+<@role> (mention de rôle) : le rôle Discord auquel on veut donner l’autorisation d’utiliser cette commande.
+
+Comportement : Met à jour de façon persistante la configuration interne des permissions du bot. Après exécution, les utilisateurs ayant le rôle mentionné pourront utiliser la commande indiquée (selon le système de niveaux de permission du bot).
+
+Interactions : Affecte la liste affichée par la commande perms (qui affiche toutes les permissions). Peut être annulée par unsetperm. La commande resetperms remet à zéro toutes les permissions définies.
+
+Exemples :
+
+setperm ban @Modérateur — autorise le rôle Modérateur à bannir des membres.
+
+setperm clear @Assistant — autorise le rôle Assistant à utiliser la commande clear.
+
+unsetperm <commande> <@role>
+
+Description : Retire l’autorisation d’un rôle pour exécuter la commande spécifiée (c’est l’inverse de setperm pour une commande donnée).
+
+Arguments :
+
+<commande> (texte) : le nom de la commande concernée.
+
+<@role> (mention de rôle) : le rôle dont on veut retirer l’accès à cette commande.
+
+Comportement : Met à jour la configuration de permissions du bot en supprimant ce rôle de la liste des autorisés pour la commande. L’effet est permanent jusqu’à nouvelle modification.
+
+Interactions : Modifie les informations affichées par perms. On peut restaurer ce droit avec setperm.
+
+Exemples :
+
+unsetperm ban @Modérateur — empêche le rôle Modérateur d’utiliser la commande ban.
+
+unsetperm mute @Staff — empêche le rôle Staff d’utiliser la commande mute.
+
+perms
+
+Description : Affiche la configuration actuelle des permissions du bot : quelles commandes sont accessibles pour quels rôles ou niveaux.
+
+Arguments : Aucun.
+
+Comportement : Envoie un message listant toutes les commandes du bot et le niveau ou les rôles autorisés à les utiliser. C’est une commande de consultation qui ne modifie pas la configuration.
+
+Interactions : Permet de vérifier l’effet des commandes setperm, unsetperm, resetperms. Utile pour voir rapidement qui a accès à quoi.
+
+Exemple :
+
+perms — affiche les niveaux de permission (perm 1, perm 2, etc.) et les rôles associés à chaque commande.
+
+resetperms
+
+Description : Réinitialise toutes les permissions du bot aux valeurs par défaut (suppression de toutes les associations commande–rôle personnalisées).
+
+Arguments : Aucun.
+
+Comportement : Supprime toutes les configurations personnalisées de permissions. Les niveaux de permission reviennent à l’état initial du bot. Cette action est irréversible sans reconfiguration manuelle.
+
+Interactions : Efface les effets de toutes les commandes setperm et unsetperm précédentes. Après exécution, il faudra redéfinir les permissions nécessaires à l’aide des commandes de permission.
+
+Exemple :
+
+resetperms — remet à zéro toute la configuration de permissions du bot.
+
+cooldown <commande> <secondes>
+
+Description : Définit un temps d’attente (cooldown) entre chaque utilisation d’une commande donnée par un même utilisateur, afin d’en empêcher le spam.
+
+Arguments :
+
+<commande> (texte) : la commande du bot à laquelle appliquer le cooldown (ex : ban, nick, etc.).
+
+<secondes> (nombre) : durée du cooldown en secondes.
+
+Comportement : Modifie la configuration du bot en enregistrant le délai spécifié. Après exécution, si un utilisateur essaie d’utiliser la commande trop rapidement, le bot refusera l’action jusqu’à ce que le cooldown expire. Le paramètre est stocké de façon persistante.
+
+Interactions : Affecte uniquement la commande ciblée. Ne modifie pas les permissions, mais ralentit son usage. Utile en complément des permissions pour limiter la fréquence d’utilisation de commandes sensibles.
+
+Exemples :
+
+cooldown ban 60 — impose un délai de 60 secondes entre deux utilisations successives de ban par un même utilisateur.
+
+cooldown slowmode 10 — impose un délai de 10 secondes entre deux exécutions de la commande slowmode.
+
+settings
+
+Description : Affiche les paramètres actuels du bot pour le serveur : préfixe utilisé, canaux de logs configurés, status des modules, etc.
+
+Arguments : Aucun.
+
+Comportement : Envoie un message récapitulatif des réglages globaux du serveur (config du préfixe, canaux de logs pour chaque type, options activées/désactivées). Ne modifie rien.
+
+Interactions : Permet de vérifier l’effet de prefix, setlog, togglelog et d’autres paramètres.
+
+Exemple :
+
+settings — affiche le préfixe actuel du bot, les salons de log enregistrés et d’autres paramètres du serveur.
+
+prefix <nouveau_prefixe>
+
+Description : Change le préfixe utilisé pour invoquer le bot sur le serveur (par exemple remplacer + par ?).
+
+Arguments :
+
+<nouveau_prefixe> (texte) : le nouveau préfixe à utiliser (généralement un symbole unique, comme !, ?, etc.).
+
+Comportement : Met à jour de façon persistante le préfixe du bot. Après exécution, toutes les commandes devront être précédées du nouveau préfixe.
+
+Interactions : Affecte indirectement toutes les commandes du bot, qui doivent toutes être appelées avec le nouveau préfixe.
+
+Exemple :
+
+prefix ? — définit ? comme nouveau préfixe du bot. Par exemple, il faudra ensuite faire ?ban pour la commande ban.
+
+🔨 Modération
+ban <@membre> [raison]
+
+Description : Bannie un membre du serveur. Cette sanction retire le membre et l’empêche de rejoindre de nouveau le serveur
+discord.fandom.com
+.
+
+Arguments :
+
+<@membre> (mention) : la personne à bannir.
+
+[raison] (texte, optionnel) : motif du ban qui sera consigné dans les logs.
+
+Comportement : Retire immédiatement le membre du serveur et enregistre le ban dans les paramètres du serveur (stockage persistant). L’utilisateur ne pourra plus rejoindre tant qu’il n’est pas unbanni.
+
+Interactions : Peut ajouter une entrée dans les logs de modération (si configuré). Lance éventuellement un avertissement persistant contre cet utilisateur. Unban via unban.
+
+Exemples :
+
+ban @Jean Spam abusif — bannit l’utilisateur Jean pour la raison “Spam abusif”.
+
+ban @BotMalveillant — bannit sans préciser de raison.
+
+unban <id_membre>
+
+Description : Annule un bannissement en cours et permet à l’utilisateur banni de rejoindre à nouveau le serveur.
+
+Arguments :
+
+<id_membre> (identifiant) : l’ID Discord du membre (puisque le membre est banni, on ne peut pas le mentionner directement).
+
+Comportement : Supprime le ban associé à cet ID dans la base Discord du serveur. Le membre concerné peut alors se reconnecter comme avant.
+
+Interactions : Inverse l’action d’un précédent ban. Ne modifie aucun autre paramètre.
+
+Exemple :
+
+unban 123456789012345678 — retire le ban de l’utilisateur dont l’ID est fourni.
+
+kick <@membre> [raison]
+
+Description : Expulse un membre du serveur sans bannissement définitif. Le membre peut revenir s’il reçoit un nouvel invite.
+
+Arguments :
+
+<@membre> (mention) : la personne à expulser.
+
+[raison] (texte, optionnel) : motif de l’expulsion pour les logs.
+
+Comportement : Retire immédiatement le membre du serveur. Aucun stockage permanent n’est effectué (contrairement au ban).
+
+Interactions : Peut être enregistré dans les logs de modération si activé. Souvent utilisé pour des sanctions temporaires ou sans gravité majeure.
+
+Exemple :
+
+kick @Alice Non-respect des règles — expulse Alice pour non-respect des règles du serveur.
+
+mute <@membre> [durée] [raison]
+
+Description : Rend un membre muet (empêche d’envoyer des messages) pendant une durée déterminée. En général, cela ajoute un rôle « Muted » au membre.
+
+Arguments :
+
+<@membre> (mention) : la personne à rendre muette.
+
+[durée] (texte, optionnel) : durée du mute (ex : 10m, 2h). Si non précisé, le mute reste indéfini.
+
+[raison] (texte, optionnel) : motif du mute pour les logs.
+
+Comportement : Ajoute immédiatement le rôle ou la permission muet au membre, le privant d’envoyer des messages. Si une durée est définie, le bot programmera la suppression automatique du mute après ce délai. Sinon, le mute perdure jusqu’à unmute.
+
+Interactions : Peut générer une entrée dans les logs. Le membre ainsi mute peut être listé par mutelist. Peut déclencher des sanctions supplémentaires s’il cumule plusieurs mutes (selon configuration).
+
+Exemples :
+
+mute @Bob 10m Flood — rend Bob muet 10 minutes pour flood.
+
+mute @Charlie Harcèlement — rend Charlie muet indéfiniment pour harcèlement.
+
+unmute <@membre>
+
+Description : Retire la sanction de silence d’un membre, lui permettant de nouveau d’envoyer des messages.
+
+Arguments :
+
+<@membre> (mention) : la personne à démute.
+
+Comportement : Supprime le rôle ou la restriction muet appliqué(e) au membre. Effet immédiat : le membre retrouve ses droits de communication.
+
+Interactions : Inverse l’action d’un mute. Peut être consigné dans les logs.
+
+Exemple :
+
+unmute @Bob — redonne la possibilité à Bob d’envoyer des messages.
+
+mutelist
+
+Description : Affiche la liste des membres actuellement muets sur le serveur.
+
+Arguments : Aucun.
+
+Comportement : Envoie un message listant tous les utilisateurs ayant actuellement le rôle « Muted » ou statut muet actif.
+
+Interactions : Aide à visualiser qui est sanctionné. Complète les commandes mute/unmute.
+
+Exemple :
+
+mutelist — affiche les membres actuellement muets.
+
+warn <@membre> [raison]
+
+Description : Ajoute un avertissement (warning) à un membre. C’est une sanction douce pour notifier un mauvais comportement sans expulsion.
+
+Arguments :
+
+<@membre> (mention) : la personne à avertir.
+
+[raison] (texte, optionnel) : motif de l’avertissement.
+
+Comportement : Enregistre l’avertissement dans la base de données du bot (persistant). Incrémente le compteur de warnings du membre. Envoie souvent un message indiquant l’avertissement (public ou privé).
+
+Interactions : Remplit l’historique des infractions du membre. Utile en complément de infractions pour voir les antécédents. Peut déclencher des sanctions automatiques selon le nombre d’avertissements.
+
+Exemple :
+
+warn @Mia Spam sur le salon — avertit Mia pour spam sur le salon.
+
+infractions <@membre>
+
+Description : Affiche l’historique des sanctions d’un membre (warnings, mutes, bans, etc.).
+
+Arguments :
+
+<@membre> (mention) : la personne dont on veut consulter l’historique.
+
+Comportement : Envoie un résumé des sanctions appliquées à ce membre : liste des warnings, mutes, bans, etc., avec leurs raisons et dates.
+
+Interactions : Permet de suivre l’efficacité des sanctions. Complète warn et les logs de modération pour juger d’une évolution.
+
+Exemple :
+
+infractions @Mia — affiche tous les avertissements et sanctions reçus par Mia.
+
+clear <nombre>
+
+Description : Supprime un certain nombre de messages récents dans le salon textuel actuel.
+
+Arguments :
+
+<nombre> (nombre) : le nombre de messages à effacer (généralement entre 1 et 100, suivant les permissions du bot).
+
+Comportement : Effet immédiat : le bot supprime les derniers messages dans le canal (dans la limite autorisée). Cette action efface l’historique et n’est pas enregistrée dans la base du bot (sauf éventuellement un log).
+
+Interactions : Utile pour nettoyer les spams. Rien n’est stocké à long terme.
+
+Exemple :
+
+clear 10 — supprime les 10 derniers messages du salon (équivalent de purger l’historique
+discordhelp.net
+).
+
+lock [#channel]
+
+Description : Verrouille un salon textuel, empêchant les membres sans permission d’y envoyer des messages.
+
+Arguments :
+
+[#channel] (salon, optionnel) : le salon à verrouiller. Par défaut, le salon actuel est utilisé.
+
+Comportement : Modifie la permission du rôle @everyone dans le salon cible pour interdire l’envoi de messages. L’effet est persistant (le salon reste verrouillé jusqu’à déverrouillage).
+
+Interactions : Inverse de unlock. S’applique au niveau du salon uniquement.
+
+Exemples :
+
+lock — verrouille le salon actuel.
+
+lock #général — verrouille explicitement le salon #général.
+
+unlock [#channel]
+
+Description : Déverrouille un salon précédemment verrouillé par lock.
+
+Arguments :
+
+[#channel] (salon, optionnel) : le salon à déverrouiller. Par défaut, le salon actuel est utilisé.
+
+Comportement : Rétablit la permission d’envoi de messages pour @everyone dans le salon cible. Annule l’effet de lock.
+
+Interactions : Inverse l’action de lock.
+
+Exemples :
+
+unlock — déverrouille le salon actuel.
+
+unlock #général — déverrouille #général.
+
+slowmode <secondes>
+
+Description : Applique un mode lent sur le salon actuel : impose un délai entre chaque message qu’un utilisateur peut envoyer. Ce délai est réglable.
+
+Arguments :
+
+<secondes> (nombre) : durée du slowmode en secondes (0 pour désactiver, jusqu’à 3600).
+
+Comportement : Ajuste immédiatement le slowmode du canal. Avec slowmode activé, l’utilisateur doit attendre le nombre de secondes défini avant d’envoyer un autre message. En d’autres termes, le mode lent « limite le nombre de messages qu’un utilisateur peut envoyer dans un canal »
+fr.a7la-home.com
+.
+
+Interactions : Aucun changement permanent autre que le réglage du canal. Utile pour réduire le spam dans les salons très actifs.
+
+Exemples :
+
+slowmode 10 — impose un délai de 10 secondes entre deux messages d’un même utilisateur dans le canal courant.
+
+slowmode 0 — désactive le slowmode du salon.
+
+nick <@membre> <nouveau_nom>
+
+Description : Change le pseudonyme du membre sur le serveur.
+
+Arguments :
+
+<@membre> (mention) : la personne dont on souhaite modifier le nom affiché.
+
+<nouveau_nom> (texte) : le nouveau surnom à lui attribuer.
+
+Comportement : Modifie immédiatement le surnom du membre sur le serveur. L’action est persistante (le nouveau nom reste jusqu’à un autre changement).
+
+Interactions : Peut être enregistré dans les logs de modération. Affecte uniquement le nom affiché, pas le statut du membre.
+
+Exemple :
+
+nick @Paul LeBrave — change le nom affiché de Paul en « LeBrave ».
+
+move <@membre> <#vocal>
+
+Description : Déplace un membre d’un salon vocal à un autre.
+
+Arguments :
+
+<@membre> (mention) : l’utilisateur à déplacer.
+
+<#vocal> (salon vocal) : le canal vocal cible où envoyer le membre.
+
+Comportement : Si le membre est dans un canal vocal, le bot le fait immédiatement quitter son salon actuel et rejoindre le salon vocal indiqué. Effet instantané.
+
+Interactions : Ne stocke rien : c’est une action ponctuelle. Utile pour organiser les participants entre plusieurs salons vocaux.
+
+Exemple :
+
+move @Lucas #Salle-de-Jeu — déplace Lucas vers le salon vocal Salle-de-Jeu.
+
+👥 Gestion des rôles
+addrole <@membre> <@role>
+
+Description : Attribue un rôle Discord à un membre.
+
+Arguments :
+
+<@membre> (mention) : l’utilisateur à qui on souhaite ajouter un rôle.
+
+<@role> (mention de rôle) : le rôle à donner.
+
+Comportement : Ajoute immédiatement le rôle au membre. Cette action est persistante : le rôle reste attaché au membre jusqu’à ce qu’il soit retiré.
+
+Interactions : Peut générer un log. Les permissions du membre changent selon le rôle ajouté. Complète removerole (qui fait l’inverse).
+
+Exemples :
+
+addrole @Sophie @Membre — donne le rôle Membre à Sophie.
+
+addrole @Léo @Admin — attribue le rôle Admin à Léo.
+
+removerole <@membre> <@role>
+
+Description : Supprime un rôle Discord d’un membre.
+
+Arguments :
+
+<@membre> (mention) : l’utilisateur concerné.
+
+<@role> (mention de rôle) : le rôle à retirer.
+
+Comportement : Enlève immédiatement le rôle du membre. Effet persistant : le membre perd toutes les permissions attachées à ce rôle.
+
+Interactions : Complémentaire à addrole. Peut être consigné dans les logs.
+
+Exemples :
+
+removerole @Sophie @Membre — enlève le rôle Membre de Sophie.
+
+removerole @Léo @Admin — retire le rôle Admin de Léo.
+
+listroles
+
+Description : Affiche la liste des rôles du serveur (ou d’un membre).
+
+Arguments : Généralement aucun (certaines versions permettent un paramètre d’utilisateur).
+
+Comportement : Affiche tous les rôles définis sur le serveur (nom et ID), ou bien les rôles possédés par un membre si l’argument est supporté. Aide à savoir quel rôle donner/retirer.
+
+Interactions : Complète addrole/removerole en indiquant les options disponibles. N’a pas d’effet sur le serveur.
+
+Exemple :
+
+listroles — affiche tous les rôles existants sur le serveur.
+
+listroles @Emma — (si pris en charge) affiche les rôles actuels d’Emma.
+
+📑 Logs & Journalisation
+logs
+
+Description : Affiche la configuration actuelle des journaux d’événements du bot (types de log et canaux associés).
+
+Arguments : Aucun.
+
+Comportement : Envoie un message récapitulant les salons configurés pour la journalisation de chaque type d’événement (modération, messages, audit, etc.). C’est une commande de consultation.
+
+Interactions : Permet de vérifier l’effet de setlog et togglelog. Ne modifie rien.
+
+Exemple :
+
+logs — liste tous les types de log (par ex. ban, warn, delete, etc.) avec le salon où ils sont envoyés.
+
+setlog <type> <#channel>
+
+Description : Définit le salon où le bot enverra les logs d’un type d’événement donné.
+
+Arguments :
+
+<type> (texte) : catégorie de log (exemple : ban, warn, messageDelete, messageEdit, voiceJoin, etc.).
+
+<#channel> (mention de salon textuel) : le canal où publier les logs de ce type.
+
+Comportement : Met à jour la configuration du bot pour que tous les événements du type indiqué soient notifiés dans le salon choisi. Action persistante.
+
+Interactions : Fonctionne avec togglelog. Nécessite que le bot ait la permission d’écrire dans le salon cible.
+
+Exemples :
+
+setlog ban #logs-modération — les notifications de bans seront envoyées dans #logs-modération.
+
+setlog messageDelete #logs-messages — les suppressions de messages seront loggées dans #logs-messages.
+
+togglelog <type>
+
+Description : Active ou désactive la journalisation d’un type d’événement.
+
+Arguments :
+
+<type> (texte) : la catégorie de log à basculer (mêmes types que pour setlog).
+
+Comportement : Modifie l’état activé/désactivé de la journalisation pour ce type d’événement, sans changer le canal configuré. Persistant.
+
+Interactions : Complémentaire à setlog. Permet d’arrêter temporairement la journalisation (par exemple togglelog ban désactive les logs de bannissements).
+
+Exemple :
+
+togglelog ban — bascule l’enregistrement des bans entre activé et désactivé.
+
+logsettings
+
+Description : Affiche en détail tous les paramètres des logs (similaire à logs).
+
+Arguments : Aucun.
+
+Comportement : Envoie un résumé des réglages de chaque type de log : salon attribué et statut (actif/inactif). Ne modifie rien.
+
+Interactions : Alias utile pour vérifier la configuration complète.
+
+Exemple :
+
+logsettings — affiche pour chaque type de log le salon associé et si la log est active.
+
+logtest
+
+Description : Envoie un message de test dans les salons de log configurés pour vérifier que le bot peut y écrire.
+
+Arguments : (optionnel) un type de log spécifique, selon l’implémentation.
+
+Comportement : Le bot publie un message fictif ("test de log") dans le ou les salons configurés pour les logs, afin de s’assurer du bon fonctionnement. Pas d’effet persistant (c’est un test).
+
+Interactions : Permet de vérifier après setlog que le bot a bien les accès.
+
+Exemples :
+
+logtest — envoie un message de test dans chaque canal de log actif.
+
+logtest ban — envoie un test uniquement dans le salon de logs des bannissements.
+
+activity
+
+Description : Affiche des statistiques d’activité du serveur (membres en ligne, messages envoyés, etc.), selon la configuration du bot.
+
+Arguments : Aucun (ou optionnel selon les options de statistique).
+
+Comportement : Génère un rapport sommaire de l’activité récente ou globale : nombre d’utilisateurs en ligne, de messages postés, connexions, etc. Les détails dépendent de l’implémentation du bot.
+
+Interactions : Aide à évaluer la participation sur le serveur. Peut être lié à un module de statistiques plus complet.
+
+Exemple :
+
+activity — affiche par exemple : "123 membres en ligne, 4567 messages cette semaine" (exemple fictif).
