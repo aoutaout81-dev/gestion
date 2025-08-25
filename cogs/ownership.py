@@ -6,17 +6,41 @@ from utils.converters import MemberConverter, UserConverter
 def is_owner_or_buyer():
     """Check if user is owner or buyer"""
     async def predicate(ctx):
-        buyer = await ctx.bot.db.get_buyer(ctx.guild.id)
-        is_owner = await ctx.bot.db.is_owner(ctx.guild.id, ctx.author.id)
-        return ctx.author.id == buyer or is_owner
+        try:
+            # Check if user is bot owner first
+            if await ctx.bot.is_owner(ctx.author):
+                return True
+            
+            # Check buyer
+            buyer = await ctx.bot.db.get_buyer(ctx.guild.id)
+            if buyer and ctx.author.id == buyer:
+                return True
+            
+            # Check owner
+            is_owner = await ctx.bot.db.is_owner(ctx.guild.id, ctx.author.id)
+            if is_owner:
+                return True
+                
+            return False
+        except Exception as e:
+            print(f"Error in ownership check: {e}")
+            return False
     
     return commands.check(predicate)
 
 def is_buyer_only():
     """Check if user is buyer only"""
     async def predicate(ctx):
-        buyer = await ctx.bot.db.get_buyer(ctx.guild.id)
-        return ctx.author.id == buyer
+        try:
+            # Check if user is bot owner first
+            if await ctx.bot.is_owner(ctx.author):
+                return True
+                
+            buyer = await ctx.bot.db.get_buyer(ctx.guild.id)
+            return buyer and ctx.author.id == buyer
+        except Exception as e:
+            print(f"Error in buyer check: {e}")
+            return False
     
     return commands.check(predicate)
 
@@ -124,6 +148,19 @@ class Ownership(commands.Cog):
             await ctx.send(f"❌ {member.mention} n'est plus en laisse.")
         except discord.Forbidden:
             await ctx.send("❌ Je n'ai pas la permission de modifier ce pseudo.")
+    
+    @commands.command(name="setupbuyer", hidden=True)
+    @commands.has_permissions(administrator=True)
+    async def setup_buyer(self, ctx, member: MemberConverter):
+        """Configure le buyer initial du serveur (Admin uniquement)"""
+        existing_buyer = await self.bot.db.get_buyer(ctx.guild.id)
+        if existing_buyer:
+            buyer_user = ctx.guild.get_member(existing_buyer)
+            if buyer_user:
+                return await ctx.send(f"❌ Un buyer est déjà configuré : {buyer_user.mention}")
+        
+        recovery_code = await self.bot.db.set_buyer(ctx.guild.id, member.id)
+        await ctx.send(f"✅ {member.mention} est maintenant le buyer principal.\n🔑 Code de récupération : `{recovery_code}`\n⚠️ **Gardez ce code en sécurité !**")
     
     @commands.command(name="owner")
     @is_buyer_only()
