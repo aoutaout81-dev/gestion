@@ -253,19 +253,8 @@ class Moderation(commands.Cog):
                 f"Duration: {duration if duration else 'Permanent'}"
             )
             
-            embed = discord.Embed(
-                title="🔇 User Muted",
-                description=f"**{member}** has been muted.",
-                color=self.bot.config.success_color
-            )
-            embed.add_field(name="Reason", value=reason, inline=False)
-            embed.add_field(
-                name="Duration", 
-                value=format_time(duration_seconds) if duration_seconds else "Permanent", 
-                inline=False
-            )
-            embed.add_field(name="Moderator", value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            duration_text = format_time(duration_seconds) if duration_seconds else "Permanent"
+            await ctx.send(f"🔇 **{member}** muté. Durée: {duration_text}. Raison: {reason}")
             
             # Schedule unmute if duration is set
             if duration_seconds:
@@ -321,13 +310,7 @@ class Moderation(commands.Cog):
                 ctx.guild.id, member.id, ctx.author.id, "unmute"
             )
             
-            embed = discord.Embed(
-                title="🔊 User Unmuted",
-                description=f"**{member}** has been unmuted.",
-                color=self.bot.config.success_color
-            )
-            embed.add_field(name="Moderator", value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.send(f"🔊 **{member}** n'est plus muté.")
             
         except Exception as e:
             embed = discord.Embed(
@@ -426,14 +409,7 @@ class Moderation(commands.Cog):
             except:
                 pass  # User has DMs disabled
             
-            embed = discord.Embed(
-                title="⚠️ User Warned",
-                description=f"**{member}** has been warned.",
-                color=self.bot.config.warning_color
-            )
-            embed.add_field(name="Reason", value=reason, inline=False)
-            embed.add_field(name="Moderator", value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.send(f"⚠️ **{member}** a été averti. Raison: {reason}")
             
         except Exception as e:
             embed = discord.Embed(
@@ -517,14 +493,8 @@ class Moderation(commands.Cog):
                 f"Cleared {len(deleted) - 1} messages in {ctx.channel.name}"
             )
             
-            embed = discord.Embed(
-                title="🧹 Messages Cleared",
-                description=f"Cleared {len(deleted) - 1} messages.",
-                color=self.bot.config.success_color
-            )
-            
             # Send confirmation and delete after 5 seconds
-            msg = await ctx.send(embed=embed, delete_after=5)
+            await ctx.send(f"🧹 {len(deleted) - 1} messages supprimés.", delete_after=5)
             
         except discord.Forbidden:
             embed = discord.Embed(

@@ -17,12 +17,7 @@ class Administration(commands.Cog):
         try:
             await self.bot.db.set_command_permission(ctx.guild.id, command_name.lower(), role.id)
             
-            embed = discord.Embed(
-                title="✅ Permission définie",
-                description=f"Le rôle {role.mention} peut maintenant utiliser la commande `{command_name}`.",
-                color=self.bot.config.success_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"✅ Rôle {role.mention} peut utiliser `{command_name}`.")
             
             # Log the action
             await self.bot.db.log_moderation_action(
@@ -45,12 +40,7 @@ class Administration(commands.Cog):
         try:
             await self.bot.db.remove_command_permission(ctx.guild.id, command_name.lower(), role.id)
             
-            embed = discord.Embed(
-                title="✅ Permission retirée",
-                description=f"Le rôle {role.mention} ne peut plus utiliser la commande `{command_name}`.",
-                color=self.bot.config.success_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"✅ Rôle {role.mention} ne peut plus utiliser `{command_name}`.")
             
             # Log the action
             await self.bot.db.log_moderation_action(

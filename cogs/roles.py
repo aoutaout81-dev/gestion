@@ -61,13 +61,7 @@ class RoleManagement(commands.Cog):
                 f"Rôle {role.name} ajouté"
             )
             
-            embed = discord.Embed(
-                title="✅ Rôle ajouté",
-                description=f"Le rôle {role.mention} a été ajouté à **{member}**.",
-                color=self.bot.config.success_color
-            )
-            embed.add_field(name="Modérateur", value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.send(f"✅ Rôle {role.mention} ajouté à **{member}**.")
             
         except discord.Forbidden:
             embed = discord.Embed(
@@ -135,13 +129,7 @@ class RoleManagement(commands.Cog):
                 f"Rôle {role.name} retiré"
             )
             
-            embed = discord.Embed(
-                title="✅ Rôle retiré",
-                description=f"Le rôle {role.mention} a été retiré de **{member}**.",
-                color=self.bot.config.success_color
-            )
-            embed.add_field(name="Modérateur", value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.send(f"✅ Rôle {role.mention} retiré de **{member}**.")
             
         except discord.Forbidden:
             embed = discord.Embed(

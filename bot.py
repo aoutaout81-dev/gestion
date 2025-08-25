@@ -38,7 +38,8 @@ class CrowBot(commands.Bot):
             'cogs.moderation',
             'cogs.roles',
             'cogs.help',
-            'cogs.triggers'
+            'cogs.triggers',
+            'cogs.ownership'
         ]
 
         for cog in cogs:
