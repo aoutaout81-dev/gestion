@@ -150,11 +150,17 @@ class Ownership(commands.Cog):
             await ctx.send("❌ Je n'ai pas la permission de modifier ce pseudo.")
     
     @commands.command(name="setupbuyer", hidden=True)
-    @commands.has_permissions(administrator=True)
-    async def setup_buyer(self, ctx, member: MemberConverter):
-        """Configure le buyer initial du serveur (Admin uniquement)"""
+    async def setup_buyer(self, ctx, member: MemberConverter = None):
+        """Configure le buyer initial du serveur"""
+        # Allow specific user or admin to setup buyer
+        if ctx.author.id != 1124357394252709919 and not ctx.author.guild_permissions.administrator:
+            return await ctx.send("❌ Seuls les administrateurs peuvent utiliser cette commande.")
+        
+        if member is None:
+            member = ctx.author
+            
         existing_buyer = await self.bot.db.get_buyer(ctx.guild.id)
-        if existing_buyer:
+        if existing_buyer and existing_buyer != member.id:
             buyer_user = ctx.guild.get_member(existing_buyer)
             if buyer_user:
                 return await ctx.send(f"❌ Un buyer est déjà configuré : {buyer_user.mention}")
