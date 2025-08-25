@@ -53,9 +53,6 @@ class Triggers(commands.Cog):
         # Embed automatique pour selfies
         await self.handle_selfie_embed(message)
 
-        # Laisser passer les commandes
-        await self.bot.process_commands(message)
-
     async def handle_blocked_channels(self, message: discord.Message):
         if message.channel.id not in self.protected_channels:
             return

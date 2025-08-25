@@ -37,7 +37,7 @@ class CrowBot(commands.Bot):
             'cogs.administration',
             'cogs.moderation',
             'cogs.roles',
-            'cogs.help',
+            'cogs.help_interactive',
             'cogs.triggers',
             'cogs.ownership'
         ]
