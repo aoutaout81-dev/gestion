@@ -5,6 +5,7 @@ import time
 from typing import Optional
 from utils.permissions import has_permission
 from utils.helpers import parse_time, format_time, get_or_fetch_user, get_mute_role
+from utils.converters import MemberConverter, UserConverter
 
 class Moderation(commands.Cog):
     """Moderation commands for managing users and maintaining order"""
@@ -14,12 +15,12 @@ class Moderation(commands.Cog):
     
     @commands.command(name="ban")
     @has_permission()
-    async def ban_user(self, ctx, member: discord.Member, *, reason: str = "No reason provided"):
+    async def ban_user(self, ctx, member: MemberConverter, *, reason: str = "Aucune raison fournie"):
         """Ban a member from the server"""
         if member == ctx.author:
             embed = discord.Embed(
-                title="❌ Error",
-                description="You cannot ban yourself.",
+                title="❌ Erreur",
+                description="Vous ne pouvez pas vous bannir vous-même.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -27,8 +28,8 @@ class Moderation(commands.Cog):
         
         if member.top_role >= ctx.author.top_role and ctx.author != ctx.guild.owner:
             embed = discord.Embed(
-                title="❌ Error",
-                description="You cannot ban someone with a higher or equal role.",
+                title="❌ Erreur",
+                description="Vous ne pouvez pas bannir quelqu'un avec un rôle supérieur ou égal.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -38,12 +39,12 @@ class Moderation(commands.Cog):
             # Send DM to user before banning
             try:
                 dm_embed = discord.Embed(
-                    title="🔨 You have been banned",
-                    description=f"You have been banned from **{ctx.guild.name}**",
+                    title="🔨 Vous avez été banni",
+                    description=f"Vous avez été banni de **{ctx.guild.name}**",
                     color=self.bot.config.error_color
                 )
-                dm_embed.add_field(name="Reason", value=reason, inline=False)
-                dm_embed.add_field(name="Moderator", value=str(ctx.author), inline=False)
+                dm_embed.add_field(name="Raison", value=reason, inline=False)
+                dm_embed.add_field(name="Modérateur", value=str(ctx.author), inline=False)
                 await member.send(embed=dm_embed)
             except:
                 pass  # User has DMs disabled
@@ -61,12 +62,12 @@ class Moderation(commands.Cog):
             )
             
             embed = discord.Embed(
-                title="🔨 User Banned",
-                description=f"**{member}** has been banned.",
+                title="🔨 Utilisateur banni",
+                description=f"**{member}** a été banni.",
                 color=self.bot.config.success_color
             )
-            embed.add_field(name="Reason", value=reason, inline=False)
-            embed.add_field(name="Moderator", value=ctx.author.mention, inline=False)
+            embed.add_field(name="Raison", value=reason, inline=False)
+            embed.add_field(name="Modérateur", value=ctx.author.mention, inline=False)
             await ctx.send(embed=embed)
             
         except discord.Forbidden:
@@ -86,29 +87,28 @@ class Moderation(commands.Cog):
     
     @commands.command(name="unban")
     @has_permission()
-    async def unban_user(self, ctx, user_id: int):
+    async def unban_user(self, ctx, user: UserConverter):
         """Unban a user by their ID"""
         try:
-            user = await self.bot.fetch_user(user_id)
             await ctx.guild.unban(user, reason=f"Unbanned by {ctx.author}")
             
             # Log moderation action
             await self.bot.db.log_moderation_action(
-                ctx.guild.id, user_id, ctx.author.id, "unban"
+                ctx.guild.id, user.id, ctx.author.id, "unban"
             )
             
             embed = discord.Embed(
-                title="✅ User Unbanned",
-                description=f"**{user}** has been unbanned.",
+                title="✅ Utilisateur débanni",
+                description=f"**{user}** a été débanni.",
                 color=self.bot.config.success_color
             )
-            embed.add_field(name="Moderator", value=ctx.author.mention, inline=False)
+            embed.add_field(name="Modérateur", value=ctx.author.mention, inline=False)
             await ctx.send(embed=embed)
             
         except discord.NotFound:
             embed = discord.Embed(
-                title="❌ Error",
-                description="User not found or not banned.",
+                title="❌ Erreur",
+                description="Utilisateur introuvable ou non banni.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -122,7 +122,7 @@ class Moderation(commands.Cog):
     
     @commands.command(name="kick")
     @has_permission()
-    async def kick_user(self, ctx, member: discord.Member, *, reason: str = "No reason provided"):
+    async def kick_user(self, ctx, member: MemberConverter, *, reason: str = "Aucune raison fournie"):
         """Kick a member from the server"""
         if member == ctx.author:
             embed = discord.Embed(
@@ -194,7 +194,7 @@ class Moderation(commands.Cog):
     
     @commands.command(name="mute")
     @has_permission()
-    async def mute_user(self, ctx, member: discord.Member, duration: Optional[str] = None, *, reason: str = "No reason provided"):
+    async def mute_user(self, ctx, member: MemberConverter, duration: Optional[str] = None, *, reason: str = "Aucune raison fournie"):
         """Mute a member (prevent them from sending messages)"""
         if member == ctx.author:
             embed = discord.Embed(
@@ -294,7 +294,7 @@ class Moderation(commands.Cog):
     
     @commands.command(name="unmute")
     @has_permission()
-    async def unmute_user(self, ctx, member: discord.Member):
+    async def unmute_user(self, ctx, member: MemberConverter):
         """Unmute a member"""
         try:
             # Check if user is actually muted
@@ -391,7 +391,7 @@ class Moderation(commands.Cog):
     
     @commands.command(name="warn")
     @has_permission()
-    async def warn_user(self, ctx, member: discord.Member, *, reason: str = "No reason provided"):
+    async def warn_user(self, ctx, member: MemberConverter, *, reason: str = "Aucune raison fournie"):
         """Give a warning to a member"""
         if member == ctx.author:
             embed = discord.Embed(
@@ -445,7 +445,7 @@ class Moderation(commands.Cog):
     
     @commands.command(name="infractions")
     @has_permission()
-    async def show_infractions(self, ctx, member: discord.Member):
+    async def show_infractions(self, ctx, member: MemberConverter):
         """Show infractions for a member"""
         try:
             infractions = await self.bot.db.get_user_infractions(ctx.guild.id, member.id)

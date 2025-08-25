@@ -38,7 +38,8 @@ class CrowBot(commands.Bot):
         # Load cogs
         cogs = [
             'cogs.administration',
-            'cogs.moderation'
+            'cogs.moderation',
+            'cogs.help'
         ]
         
         for cog in cogs:
@@ -72,23 +73,36 @@ class CrowBot(commands.Bot):
             return
         
         if isinstance(error, commands.MissingPermissions):
-            await ctx.send("❌ You don't have permission to use this command.")
+            await ctx.send("❌ Vous n'avez pas la permission d'utiliser cette commande.")
             return
         
         if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send(f"❌ Missing required argument: `{error.param.name}`")
+            await ctx.send(f"❌ Argument requis manquant : `{error.param.name}`")
             return
         
         if isinstance(error, commands.BadArgument):
-            await ctx.send(f"❌ Invalid argument provided: {error}")
+            await ctx.send(f"❌ Argument invalide : {error}")
             return
         
         if isinstance(error, commands.CommandOnCooldown):
-            await ctx.send(f"❌ Command is on cooldown. Try again in {error.retry_after:.2f} seconds.")
+            await ctx.send(f"❌ Commande en cooldown. Réessayez dans {error.retry_after:.2f} secondes.")
+            return
+        
+        # Handle custom converter errors
+        if isinstance(error, commands.MemberNotFound):
+            await ctx.send(f"❌ {error}")
+            return
+        
+        if isinstance(error, commands.RoleNotFound):
+            await ctx.send(f"❌ {error}")
+            return
+        
+        if isinstance(error, commands.UserNotFound):
+            await ctx.send(f"❌ {error}")
             return
         
         self.logger.error(f"Unhandled error in command {ctx.command}: {error}")
-        await ctx.send("❌ An unexpected error occurred while processing the command.")
+        await ctx.send("❌ Une erreur inattendue s'est produite lors du traitement de la commande.")
     
     async def check_permissions(self, ctx, command_name):
         """Check if user has permission to use a command"""

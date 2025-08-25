@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from utils.permissions import has_permission, admin_only
 from utils.helpers import parse_time, format_time
+from utils.converters import RoleConverter
 
 class Administration(commands.Cog):
     """Administration and configuration commands"""
@@ -11,14 +12,14 @@ class Administration(commands.Cog):
     
     @commands.command(name="setperm")
     @admin_only()
-    async def set_permission(self, ctx, command_name: str, role: discord.Role):
+    async def set_permission(self, ctx, command_name: str, role: RoleConverter):
         """Set permission for a command to a role"""
         try:
             await self.bot.db.set_command_permission(ctx.guild.id, command_name.lower(), role.id)
             
             embed = discord.Embed(
-                title="✅ Permission Set",
-                description=f"Role {role.mention} can now use the `{command_name}` command.",
+                title="✅ Permission définie",
+                description=f"Le rôle {role.mention} peut maintenant utiliser la commande `{command_name}`.",
                 color=self.bot.config.success_color
             )
             await ctx.send(embed=embed)
@@ -39,14 +40,14 @@ class Administration(commands.Cog):
     
     @commands.command(name="unsetperm")
     @admin_only()
-    async def unset_permission(self, ctx, command_name: str, role: discord.Role):
+    async def unset_permission(self, ctx, command_name: str, role: RoleConverter):
         """Remove permission for a command from a role"""
         try:
             await self.bot.db.remove_command_permission(ctx.guild.id, command_name.lower(), role.id)
             
             embed = discord.Embed(
-                title="✅ Permission Removed",
-                description=f"Role {role.mention} can no longer use the `{command_name}` command.",
+                title="✅ Permission retirée",
+                description=f"Le rôle {role.mention} ne peut plus utiliser la commande `{command_name}`.",
                 color=self.bot.config.success_color
             )
             await ctx.send(embed=embed)
