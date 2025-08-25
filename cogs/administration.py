@@ -1,0 +1,264 @@
+import discord
+from discord.ext import commands
+from utils.permissions import has_permission, admin_only
+from utils.helpers import parse_time, format_time
+
+class Administration(commands.Cog):
+    """Administration and configuration commands"""
+    
+    def __init__(self, bot):
+        self.bot = bot
+    
+    @commands.command(name="setperm")
+    @admin_only()
+    async def set_permission(self, ctx, command_name: str, role: discord.Role):
+        """Set permission for a command to a role"""
+        try:
+            await self.bot.db.set_command_permission(ctx.guild.id, command_name.lower(), role.id)
+            
+            embed = discord.Embed(
+                title="✅ Permission Set",
+                description=f"Role {role.mention} can now use the `{command_name}` command.",
+                color=self.bot.config.success_color
+            )
+            await ctx.send(embed=embed)
+            
+            # Log the action
+            await self.bot.db.log_moderation_action(
+                ctx.guild.id, 0, ctx.author.id, "setperm", 
+                f"Granted {role.name} permission for {command_name}"
+            )
+            
+        except Exception as e:
+            embed = discord.Embed(
+                title="❌ Error",
+                description=f"Failed to set permission: {str(e)}",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+    
+    @commands.command(name="unsetperm")
+    @admin_only()
+    async def unset_permission(self, ctx, command_name: str, role: discord.Role):
+        """Remove permission for a command from a role"""
+        try:
+            await self.bot.db.remove_command_permission(ctx.guild.id, command_name.lower(), role.id)
+            
+            embed = discord.Embed(
+                title="✅ Permission Removed",
+                description=f"Role {role.mention} can no longer use the `{command_name}` command.",
+                color=self.bot.config.success_color
+            )
+            await ctx.send(embed=embed)
+            
+            # Log the action
+            await self.bot.db.log_moderation_action(
+                ctx.guild.id, 0, ctx.author.id, "unsetperm", 
+                f"Removed {role.name} permission for {command_name}"
+            )
+            
+        except Exception as e:
+            embed = discord.Embed(
+                title="❌ Error",
+                description=f"Failed to remove permission: {str(e)}",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+    
+    @commands.command(name="perms")
+    @has_permission()
+    async def show_permissions(self, ctx):
+        """Show all command permissions for this server"""
+        try:
+            permissions = await self.bot.db.get_all_permissions(ctx.guild.id)
+            
+            if not permissions:
+                embed = discord.Embed(
+                    title="📋 Command Permissions",
+                    description="No custom permissions set. All commands use default permissions.",
+                    color=self.bot.config.embed_color
+                )
+            else:
+                embed = discord.Embed(
+                    title="📋 Command Permissions",
+                    color=self.bot.config.embed_color
+                )
+                
+                for command_name, role_ids in permissions.items():
+                    roles = []
+                    for role_id in role_ids:
+                        role = ctx.guild.get_role(role_id)
+                        if role:
+                            roles.append(role.mention)
+                    
+                    if roles:
+                        embed.add_field(
+                            name=f"`{command_name}`",
+                            value=", ".join(roles),
+                            inline=False
+                        )
+            
+            await ctx.send(embed=embed)
+            
+        except Exception as e:
+            embed = discord.Embed(
+                title="❌ Error",
+                description=f"Failed to retrieve permissions: {str(e)}",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+    
+    @commands.command(name="resetperms")
+    @admin_only()
+    async def reset_permissions(self, ctx):
+        """Reset all command permissions to default"""
+        try:
+            await self.bot.db.reset_permissions(ctx.guild.id)
+            
+            embed = discord.Embed(
+                title="✅ Permissions Reset",
+                description="All command permissions have been reset to default.",
+                color=self.bot.config.success_color
+            )
+            await ctx.send(embed=embed)
+            
+            # Log the action
+            await self.bot.db.log_moderation_action(
+                ctx.guild.id, 0, ctx.author.id, "resetperms", 
+                "Reset all command permissions"
+            )
+            
+        except Exception as e:
+            embed = discord.Embed(
+                title="❌ Error",
+                description=f"Failed to reset permissions: {str(e)}",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+    
+    @commands.command(name="cooldown")
+    @admin_only()
+    async def set_cooldown(self, ctx, command_name: str, seconds: int):
+        """Set cooldown for a command"""
+        if seconds < 0:
+            embed = discord.Embed(
+                title="❌ Invalid Cooldown",
+                description="Cooldown must be a positive number.",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+            return
+        
+        try:
+            await self.bot.db.set_command_cooldown(ctx.guild.id, command_name.lower(), seconds)
+            
+            embed = discord.Embed(
+                title="✅ Cooldown Set",
+                description=f"Command `{command_name}` now has a {seconds} second cooldown.",
+                color=self.bot.config.success_color
+            )
+            await ctx.send(embed=embed)
+            
+            # Log the action
+            await self.bot.db.log_moderation_action(
+                ctx.guild.id, 0, ctx.author.id, "cooldown", 
+                f"Set {command_name} cooldown to {seconds} seconds"
+            )
+            
+        except Exception as e:
+            embed = discord.Embed(
+                title="❌ Error",
+                description=f"Failed to set cooldown: {str(e)}",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+    
+    @commands.command(name="settings")
+    @has_permission()
+    async def show_settings(self, ctx):
+        """Show current bot settings for this server"""
+        try:
+            prefix = await self.bot.db.get_guild_prefix(ctx.guild.id) or self.bot.config.default_prefix
+            
+            embed = discord.Embed(
+                title="⚙️ Server Settings",
+                color=self.bot.config.embed_color
+            )
+            
+            embed.add_field(
+                name="Prefix",
+                value=f"`{prefix}`",
+                inline=True
+            )
+            
+            embed.add_field(
+                name="Guild ID",
+                value=str(ctx.guild.id),
+                inline=True
+            )
+            
+            embed.add_field(
+                name="Members",
+                value=str(ctx.guild.member_count),
+                inline=True
+            )
+            
+            # Check if mute role exists
+            mute_role = discord.utils.get(ctx.guild.roles, name="Muted")
+            embed.add_field(
+                name="Mute Role",
+                value=mute_role.mention if mute_role else "Not created",
+                inline=True
+            )
+            
+            embed.set_footer(text=f"Bot ID: {self.bot.user.id}")
+            
+            await ctx.send(embed=embed)
+            
+        except Exception as e:
+            embed = discord.Embed(
+                title="❌ Error",
+                description=f"Failed to retrieve settings: {str(e)}",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+    
+    @commands.command(name="prefix")
+    @admin_only()
+    async def set_prefix(self, ctx, new_prefix: str):
+        """Change the bot prefix for this server"""
+        if len(new_prefix) > 5:
+            embed = discord.Embed(
+                title="❌ Invalid Prefix",
+                description="Prefix must be 5 characters or less.",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+            return
+        
+        try:
+            await self.bot.db.set_guild_prefix(ctx.guild.id, new_prefix)
+            
+            embed = discord.Embed(
+                title="✅ Prefix Changed",
+                description=f"Bot prefix has been changed to `{new_prefix}`",
+                color=self.bot.config.success_color
+            )
+            await ctx.send(embed=embed)
+            
+            # Log the action
+            await self.bot.db.log_moderation_action(
+                ctx.guild.id, 0, ctx.author.id, "prefix", 
+                f"Changed prefix to {new_prefix}"
+            )
+            
+        except Exception as e:
+            embed = discord.Embed(
+                title="❌ Error",
+                description=f"Failed to change prefix: {str(e)}",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+
+async def setup(bot):
+    await bot.add_cog(Administration(bot))
