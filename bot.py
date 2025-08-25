@@ -32,23 +32,22 @@ class CrowBot(commands.Bot):
         return prefix or self.config.default_prefix
     
     async def setup_hook(self):
-        """Setup hook called when the bot is ready"""
         await self.db.initialize()
-        
-        # Load cogs
         cogs = [
             'cogs.administration',
             'cogs.moderation',
             'cogs.roles',
-            'cogs.help'
+            'cogs.help',
+            'cogs.triggers'
         ]
-        
+
         for cog in cogs:
-            try:
-                await self.load_extension(cog)
-                self.logger.info(f"Loaded cog: {cog}")
-            except Exception as e:
-                self.logger.error(f"Failed to load cog {cog}: {e}")
+            if cog not in self.extensions:  # ← empêche le rechargement
+                try:
+                    await self.load_extension(cog)
+                    self.logger.info(f"Loaded cog: {cog}")
+                except Exception as e:
+                    self.logger.error(f"Failed to load cog {cog}: {e}")
     
     async def on_ready(self):
         """Called when the bot is ready"""
