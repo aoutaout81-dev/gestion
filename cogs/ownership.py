@@ -20,9 +20,30 @@ def is_owner_or_buyer():
             is_owner = await ctx.bot.db.is_owner(ctx.guild.id, ctx.author.id)
             if is_owner:
                 return True
-                
+            
+            # Debug info - send error message explaining why access was denied
+            error_msg = "❌ **Accès refusé - Commande Ownership**\n"
+            error_msg += f"👤 **Votre ID :** {ctx.author.id}\n"
+            
+            if buyer:
+                error_msg += f"🔑 **Buyer configuré :** <@{buyer}> (ID: {buyer})\n"
+            else:
+                error_msg += "🔑 **Buyer :** Aucun configuré (utilisez `+setupbuyer`)\n"
+            
+            owners = await ctx.bot.db.get_owners(ctx.guild.id)
+            if owners:
+                error_msg += f"👨‍💼 **Owners :** {len(owners)} configuré(s)\n"
+            else:
+                error_msg += "👨‍💼 **Owners :** Aucun configuré\n"
+            
+            error_msg += "\n💡 **Solution :** Demandez au buyer de vous ajouter comme owner avec `+owner @vous`"
+            
+            # Send detailed error message
+            await ctx.send(error_msg)
             return False
+            
         except Exception as e:
+            await ctx.send(f"❌ **Erreur système :** {str(e)}\n🔧 Contactez l'administrateur du bot.")
             print(f"Error in ownership check: {e}")
             return False
     
@@ -37,8 +58,26 @@ def is_buyer_only():
                 return True
                 
             buyer = await ctx.bot.db.get_buyer(ctx.guild.id)
-            return buyer and ctx.author.id == buyer
+            if buyer and ctx.author.id == buyer:
+                return True
+            
+            # Debug info - send error message explaining why access was denied
+            error_msg = "❌ **Accès refusé - Commande Buyer uniquement**\n"
+            error_msg += f"👤 **Votre ID :** {ctx.author.id}\n"
+            
+            if buyer:
+                error_msg += f"🔑 **Buyer configuré :** <@{buyer}> (ID: {buyer})\n"
+                error_msg += "💡 **Seul le buyer peut utiliser cette commande**"
+            else:
+                error_msg += "🔑 **Buyer :** Aucun configuré\n"
+                error_msg += "💡 **Solution :** Utilisez `+setupbuyer` pour vous configurer comme buyer"
+            
+            # Send detailed error message
+            await ctx.send(error_msg)
+            return False
+            
         except Exception as e:
+            await ctx.send(f"❌ **Erreur système :** {str(e)}\n🔧 Contactez l'administrateur du bot.")
             print(f"Error in buyer check: {e}")
             return False
     

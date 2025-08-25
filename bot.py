@@ -73,37 +73,43 @@ class CrowBot(commands.Bot):
         if isinstance(error, commands.CommandNotFound):
             return
         
+        if isinstance(error, commands.CheckFailure):
+            # Don't send error message for check failures, already handled by custom checks
+            return
+        
         if isinstance(error, commands.MissingPermissions):
-            await ctx.send("❌ Vous n'avez pas la permission d'utiliser cette commande.")
+            perms = ", ".join(error.missing_permissions)
+            await ctx.send(f"❌ **Permissions manquantes :** `{perms}`\n💡 Vous devez avoir ces permissions pour utiliser cette commande.")
             return
         
         if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send(f"❌ Argument requis manquant : `{error.param.name}`")
+            await ctx.send(f"❌ **Argument manquant :** `{error.param.name}`\n💡 Utilisez `+help` pour voir la syntaxe correcte.")
             return
         
         if isinstance(error, commands.BadArgument):
-            await ctx.send(f"❌ Argument invalide : {error}")
+            await ctx.send(f"❌ **Argument invalide :** {error}\n💡 Vérifiez la syntaxe de votre commande.")
             return
         
         if isinstance(error, commands.CommandOnCooldown):
-            await ctx.send(f"❌ Commande en cooldown. Réessayez dans {error.retry_after:.2f} secondes.")
+            await ctx.send(f"❌ **Commande en cooldown**\n⏰ Réessayez dans {error.retry_after:.1f} secondes.")
             return
         
         # Handle custom converter errors
         if isinstance(error, commands.MemberNotFound):
-            await ctx.send(f"❌ {error}")
+            await ctx.send(f"❌ **Membre introuvable :** {error}")
             return
         
         if isinstance(error, commands.RoleNotFound):
-            await ctx.send(f"❌ {error}")
+            await ctx.send(f"❌ **Rôle introuvable :** {error}")
             return
         
         if isinstance(error, commands.UserNotFound):
-            await ctx.send(f"❌ {error}")
+            await ctx.send(f"❌ **Utilisateur introuvable :** {error}")
             return
         
-        self.logger.error(f"Unhandled error in command {ctx.command}: {error}")
-        await ctx.send("❌ Une erreur inattendue s'est produite lors du traitement de la commande.")
+        # Enhanced error logging with more details
+        self.logger.error(f"Unhandled error in command '{ctx.command}' by {ctx.author} ({ctx.author.id}) in {ctx.guild.name if ctx.guild else 'DM'}: {error}")
+        await ctx.send(f"❌ **Erreur inattendue**\n🔧 Détails : `{str(error)[:100]}...`\n💡 Contactez l'administrateur si le problème persiste.")
     
     async def check_permissions(self, ctx, command_name):
         """Check if user has permission to use a command"""
