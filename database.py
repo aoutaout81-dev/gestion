@@ -972,7 +972,7 @@ class Database:
             return muted_users
     
     # Logging methods
-    async def log_moderation_action(self, guild_id: int, user_id: int, moderator_id: int, action: str, reason: str, details: str = None):
+    async def log_moderation_action(self, guild_id: int, user_id: int, moderator_id: int, action: str, reason: Optional[str] = None, details: Optional[str] = None):
         """Log a moderation action"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
@@ -981,7 +981,7 @@ class Database:
             cursor.execute('''
                 INSERT INTO moderation_logs (guild_id, user_id, moderator_id, action, reason, details)
                 VALUES (?, ?, ?, ?, ?, ?)
-            ''', (guild_id, user_id, moderator_id, action, reason, details))
+            ''', (guild_id, user_id, moderator_id, action, reason or "Aucune raison", details or ""))
             
             conn.commit()
             conn.close()
@@ -1043,12 +1043,12 @@ class Database:
     
     # Permission helper methods
     async def has_permission_level(self, guild_id: int, user_id: int, required_level: int, user_roles: List[int]) -> bool:
-        """Check if user has required permission level"""
+        """Check if user has required permission level (hierarchical)"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            # Check user-specific permissions
+            # Check user-specific permissions (user with level X can use commands of level X and below)
             cursor.execute('''
                 SELECT level FROM permission_levels 
                 WHERE guild_id = ? AND user_id = ? AND level <= ?
@@ -1060,7 +1060,7 @@ class Database:
                 conn.close()
                 return True
             
-            # Check role-based permissions
+            # Check role-based permissions (hierarchical check - lower numbers = higher access)
             if user_roles:
                 placeholders = ','.join(['?'] * len(user_roles))
                 cursor.execute(f'''

@@ -57,9 +57,14 @@ def owner_only():
             return False
         
         # Check if user is owner
-        is_owner = await ctx.bot.is_owner_user(ctx.author.id)
-        if not is_owner:
-            raise PermissionError("Seuls les owners peuvent utiliser cette commande.")
+        try:
+            is_owner = await ctx.bot.is_owner_user(ctx.author.id)
+            if not is_owner:
+                raise PermissionError("Seuls les owners peuvent utiliser cette commande.")
+        except AttributeError:
+            # Method not available, fallback to bot owner check
+            if not await ctx.bot.is_owner(ctx.author):
+                raise PermissionError("Seuls les owners peuvent utiliser cette commande.")
         
         return True
     
@@ -72,9 +77,14 @@ def buyer_only():
             return False
         
         # Check if user is buyer
-        is_buyer = await ctx.bot.is_buyer_user(ctx.author.id)
-        if not is_buyer:
-            raise PermissionError("Seul le buyer peut utiliser cette commande.")
+        try:
+            is_buyer = await ctx.bot.is_buyer_user(ctx.author.id)
+            if not is_buyer:
+                raise PermissionError("Seul le buyer peut utiliser cette commande.")
+        except AttributeError:
+            # Method not available, fallback to bot owner check
+            if not await ctx.bot.is_owner(ctx.author):
+                raise PermissionError("Seul le buyer peut utiliser cette commande.")
         
         return True
     
