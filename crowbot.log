@@ -2504,3 +2504,56 @@ AttributeError: 'Database' object has no attribute 'get_guild_prefix'
 2025-08-26 10:20:17,510 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 607ba497554d8ae78bd7e4d4ea2f8645).
 2025-08-26 10:20:19,534 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
 2025-08-26 10:20:19,534 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 10:25:20,381 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 10:25:20,382 - discord.client - INFO - logging in using static token
+2025-08-26 10:25:21,054 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 10:25:21,061 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 10:25:21,063 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 10:25:21,064 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 10:25:21,064 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 10:25:21,066 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 10:25:21,261 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: afa0b2200d031ed5ddf90cdf28019a9b).
+2025-08-26 10:25:23,298 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 10:25:23,298 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 10:25:33,922 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1418, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1376, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1056, in invoke
+    await self.prepare(ctx)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/core.py", line 960, in prepare
+    if not await self.can_run(ctx):
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1323, in can_run
+    return await discord.utils.async_all(predicate(ctx) for predicate in predicates)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/utils.py", line 715, in async_all
+    elem = await elem
+           ^^^^^^^^^^
+  File "/home/runner/workspace/utils/permissions.py", line 15, in predicate
+    has_perm = await ctx.bot.check_permissions(ctx, ctx.command.name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 117, in check_permissions
+    existing_perms = await self.db.get_all_command_permissions(ctx.guild.id)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/database.py", line 665, in get_all_command_permissions
+    cursor.execute('''
+sqlite3.OperationalError: no such column: permission_level
+2025-08-26 10:25:55,637 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 10:25:55,638 - discord.client - INFO - logging in using static token
+2025-08-26 10:25:56,115 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 10:25:56,117 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 10:25:56,118 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 10:25:56,121 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 10:25:56,122 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 10:25:56,125 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 10:25:56,436 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ba2b092731a0293b780ddd2ee2066887).
+2025-08-26 10:25:58,457 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 10:25:58,457 - chdfz gestion - INFO - Bot is in 2 guilds

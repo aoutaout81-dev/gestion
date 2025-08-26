@@ -3,7 +3,7 @@
 ## Overview
 chdfz gestion est un bot Discord de modération avancée avec système de gestion hiérarchique et fonctionnalités anti-raid. Le bot utilise Python avec discord.py et une base de données SQLite pour la persistance.
 
-## Recent Changes (25 août 2025)
+## Recent Changes (26 août 2025)
 - ✅ Migration vers Replit complétée
 - ✅ Nouvelles commandes ownership/administration avancées ajoutées
 - ✅ Système de buyers/owners implémenté
@@ -12,6 +12,9 @@ chdfz gestion est un bot Discord de modération avancée avec système de gestio
 - ✅ Commandes de communication anonyme (say, dm)
 - ✅ Réponses simplifiées pour commandes principales
 - ✅ Commande massrole pour attribution de rôles en masse
+- ✅ **NOUVEAU** : Système de permissions hiérarchiques (perm 1-9) implémenté
+- ✅ Interface française complète - plus de textes en anglais
+- ✅ Refonte complète du système de permissions selon doc CrowBots
 
 ## Project Architecture
 
@@ -40,8 +43,9 @@ chdfz gestion est un bot Discord de modération avancée avec système de gestio
 - Messages d'erreur clairs et concis
 
 ## Database Schema
-- Tables existantes : guild_settings, command_permissions, command_cooldowns, command_usage, infractions, muted_users, moderation_logs
-- **Nouvelles tables** : bot_ownership, owners, whitelist, blacklist_rank, leash_system
+- Tables existantes : guild_settings, command_cooldowns, command_usage, infractions, muted_users, moderation_logs
+- Tables ownership : bot_ownership, owners, whitelist, blacklist_rank, leash_system
+- **Tables permissions hiérarchiques** : permission_levels, command_permissions (refonte), command_specific_permissions
 
 ## Nouvelles Fonctionnalités Implémentées
 
@@ -49,6 +53,25 @@ chdfz gestion est un bot Discord de modération avancée avec système de gestio
 - **buyer** : Propriétaire principal du bot avec code de récupération
 - **owners** : Utilisateurs avec privilèges étendus
 - **whitelist** : Utilisateurs immunisés contre l'anti-raid
+
+### Système de Permissions Hiérarchiques (NOUVEAU)
+- **9 niveaux de permissions** : perm1 à perm9 (hiérarchique)
+- **Niveaux spéciaux** : owner, buyer, public, everyone
+- **Attribution flexible** : par rôle ou utilisateur individuel
+
+#### Commandes de Configuration des Permissions
+- `set perm <niveau> <@role/@user>` - Assigner niveau à un rôle/utilisateur
+- `del perm <niveau> <@role/@user>` - Retirer niveau d'un rôle/utilisateur
+- `change <commande> <niveau>` - Changer le niveau d'une commande
+- `changeall <ancien> <nouveau>` - Déplacer toutes les commandes d'un niveau
+- `perms` - Afficher la configuration des permissions
+- `helpall` - Voir toutes les commandes par niveau
+- `resetperms` - Remettre les permissions par défaut
+
+#### Permissions par Défaut
+- **Perm 1** : clear, warn, mute (modération basique)
+- **Perm 2** : kick, ban, unban, unmute, delwarn, infractions, etc. (modération complète)
+- **Perm 3** : setperm, change, resetperms, addrole, delrole, massrole (administration)
 
 ### Commandes Ownership (Owners uniquement)
 - `massrole` - Attribution de rôles en masse aux humains

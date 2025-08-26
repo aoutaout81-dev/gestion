@@ -27,15 +27,43 @@ class Database:
                 )
             ''')
             
-            # Command permissions table
+            # Permission levels table (perm 1-9)
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS permission_levels (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    guild_id INTEGER,
+                    level INTEGER,
+                    role_id INTEGER,
+                    user_id INTEGER,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(guild_id, level, role_id),
+                    UNIQUE(guild_id, level, user_id)
+                )
+            ''')
+            
+            # Command permissions table - now maps commands to permission levels
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS command_permissions (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     guild_id INTEGER,
                     command_name TEXT,
-                    role_id INTEGER,
+                    permission_level TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(guild_id, command_name, role_id)
+                    UNIQUE(guild_id, command_name)
+                )
+            ''')
+            
+            # Command-specific permissions (for individual roles/users)
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS command_specific_permissions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    guild_id INTEGER,
+                    command_name TEXT,
+                    role_id INTEGER,
+                    user_id INTEGER,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(guild_id, command_name, role_id),
+                    UNIQUE(guild_id, command_name, user_id)
                 )
             ''')
             
@@ -491,70 +519,179 @@ class Database:
             conn.commit()
             conn.close()
     
-    # Permission methods
-    async def set_command_permission(self, guild_id: int, command_name: str, role_id: int):
-        """Set permission for a command"""
+    # Permission Level methods
+    async def set_permission_level(self, guild_id: int, level: int, role_id: int = None, user_id: int = None):
+        """Set a role or user to a permission level"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            cursor.execute('''
-                INSERT OR IGNORE INTO command_permissions (guild_id, command_name, role_id) 
-                VALUES (?, ?, ?)
-            ''', (guild_id, command_name, role_id))
+            if role_id:
+                cursor.execute('''
+                    INSERT OR REPLACE INTO permission_levels (guild_id, level, role_id) 
+                    VALUES (?, ?, ?)
+                ''', (guild_id, level, role_id))
+            elif user_id:
+                cursor.execute('''
+                    INSERT OR REPLACE INTO permission_levels (guild_id, level, user_id) 
+                    VALUES (?, ?, ?)
+                ''', (guild_id, level, user_id))
             
             conn.commit()
             conn.close()
     
-    async def remove_command_permission(self, guild_id: int, command_name: str, role_id: int):
-        """Remove permission for a command"""
+    async def remove_permission_level(self, guild_id: int, level: int, role_id: int = None, user_id: int = None):
+        """Remove a role or user from a permission level"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            cursor.execute('''
-                DELETE FROM command_permissions 
-                WHERE guild_id = ? AND command_name = ? AND role_id = ?
-            ''', (guild_id, command_name, role_id))
+            if role_id:
+                cursor.execute('''
+                    DELETE FROM permission_levels 
+                    WHERE guild_id = ? AND level = ? AND role_id = ?
+                ''', (guild_id, level, role_id))
+            elif user_id:
+                cursor.execute('''
+                    DELETE FROM permission_levels 
+                    WHERE guild_id = ? AND level = ? AND user_id = ?
+                ''', (guild_id, level, user_id))
             
             conn.commit()
             conn.close()
     
-    async def get_command_permissions(self, guild_id: int, command_name: str) -> List[int]:
-        """Get allowed roles for a command"""
+    async def get_permission_levels(self, guild_id: int) -> Dict[int, Dict]:
+        """Get all permission levels for a guild"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             cursor.execute('''
-                SELECT role_id FROM command_permissions 
-                WHERE guild_id = ? AND command_name = ?
-            ''', (guild_id, command_name))
+                SELECT level, role_id, user_id FROM permission_levels 
+                WHERE guild_id = ?
+                ORDER BY level
+            ''', (guild_id,))
             
             results = cursor.fetchall()
             conn.close()
             
-            return [result[0] for result in results]
+            levels = {}
+            for level, role_id, user_id in results:
+                if level not in levels:
+                    levels[level] = {'roles': [], 'users': []}
+                if role_id:
+                    levels[level]['roles'].append(role_id)
+                if user_id:
+                    levels[level]['users'].append(user_id)
+            
+            return levels
     
-    async def get_all_permissions(self, guild_id: int) -> Dict[str, List[int]]:
+    async def set_command_permission(self, guild_id: int, command_name: str, permission_level: str):
+        """Set command to a permission level"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                INSERT OR REPLACE INTO command_permissions (guild_id, command_name, permission_level) 
+                VALUES (?, ?, ?)
+            ''', (guild_id, command_name, permission_level))
+            
+            conn.commit()
+            conn.close()
+    
+    async def set_command_specific_permission(self, guild_id: int, command_name: str, role_id: int = None, user_id: int = None):
+        """Set specific permission for a command to a role or user"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            if role_id:
+                cursor.execute('''
+                    INSERT OR REPLACE INTO command_specific_permissions (guild_id, command_name, role_id) 
+                    VALUES (?, ?, ?)
+                ''', (guild_id, command_name, role_id))
+            elif user_id:
+                cursor.execute('''
+                    INSERT OR REPLACE INTO command_specific_permissions (guild_id, command_name, user_id) 
+                    VALUES (?, ?, ?)
+                ''', (guild_id, command_name, user_id))
+            
+            conn.commit()
+            conn.close()
+    
+    async def remove_command_specific_permission(self, guild_id: int, command_name: str, role_id: int = None, user_id: int = None):
+        """Remove specific permission for a command from a role or user"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            if role_id:
+                cursor.execute('''
+                    DELETE FROM command_specific_permissions 
+                    WHERE guild_id = ? AND command_name = ? AND role_id = ?
+                ''', (guild_id, command_name, role_id))
+            elif user_id:
+                cursor.execute('''
+                    DELETE FROM command_specific_permissions 
+                    WHERE guild_id = ? AND command_name = ? AND user_id = ?
+                ''', (guild_id, command_name, user_id))
+            
+            conn.commit()
+            conn.close()
+    
+    async def get_command_permission_level(self, guild_id: int, command_name: str) -> str:
+        """Get permission level for a command"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                SELECT permission_level FROM command_permissions 
+                WHERE guild_id = ? AND command_name = ?
+            ''', (guild_id, command_name))
+            
+            result = cursor.fetchone()
+            conn.close()
+            
+            return result[0] if result else None
+    
+    async def get_all_command_permissions(self, guild_id: int) -> Dict[str, str]:
         """Get all command permissions for a guild"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             cursor.execute('''
-                SELECT command_name, role_id FROM command_permissions 
+                SELECT command_name, permission_level FROM command_permissions 
                 WHERE guild_id = ?
             ''', (guild_id,))
             
             results = cursor.fetchall()
             conn.close()
             
-            permissions = {}
-            for command_name, role_id in results:
-                if command_name not in permissions:
-                    permissions[command_name] = []
-                permissions[command_name].append(role_id)
+            return {command_name: permission_level for command_name, permission_level in results}
+    
+    async def get_command_specific_permissions(self, guild_id: int, command_name: str) -> Dict:
+        """Get specific permissions for a command"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                SELECT role_id, user_id FROM command_specific_permissions 
+                WHERE guild_id = ? AND command_name = ?
+            ''', (guild_id, command_name))
+            
+            results = cursor.fetchall()
+            conn.close()
+            
+            permissions = {'roles': [], 'users': []}
+            for role_id, user_id in results:
+                if role_id:
+                    permissions['roles'].append(role_id)
+                if user_id:
+                    permissions['users'].append(user_id)
             
             return permissions
     
@@ -564,9 +701,76 @@ class Database:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            cursor.execute('''
-                DELETE FROM command_permissions WHERE guild_id = ?
-            ''', (guild_id,))
+            cursor.execute('DELETE FROM permission_levels WHERE guild_id = ?', (guild_id,))
+            cursor.execute('DELETE FROM command_permissions WHERE guild_id = ?', (guild_id,))
+            cursor.execute('DELETE FROM command_specific_permissions WHERE guild_id = ?', (guild_id,))
+            
+            conn.commit()
+            conn.close()
+    
+    async def initialize_default_permissions(self, guild_id: int):
+        """Initialize default command permissions"""
+        defaults = {
+            # Perm 1 - Basic moderation
+            'clear': 'perm1',
+            'warn': 'perm1', 
+            'mute': 'perm1',
+            
+            # Perm 2 - Full moderation
+            'kick': 'perm2',
+            'ban': 'perm2',
+            'unban': 'perm2',
+            'unmute': 'perm2',
+            'delwarn': 'perm2',
+            'infractions': 'perm2',
+            'mutelist': 'perm2',
+            'lock': 'perm2',
+            'unlock': 'perm2',
+            
+            # Perm 3 - Administration
+            'setperm': 'perm3',
+            'delperm': 'perm3',
+            'clearperm': 'perm3',
+            'change': 'perm3',
+            'changeall': 'perm3',
+            'resetperms': 'perm3',
+            'setcooldown': 'perm3',
+            'settings': 'perm3',
+            'prefix': 'perm3',
+            'addrole': 'perm3',
+            'delrole': 'perm3',
+            'massrole': 'perm3',
+            
+            # Owners only
+            'say': 'owner',
+            'dm': 'owner',
+            'laisse': 'owner',
+            'unlaisse': 'owner',
+            'wl': 'owner',
+            'unwl': 'owner',
+            'blrank': 'owner',
+            
+            # Buyer only
+            'owner': 'buyer',
+            'unowner': 'buyer',
+            'buyer': 'buyer',
+            
+            # Public commands
+            'help': 'public',
+            'helpall': 'public',
+            'ping': 'public',
+            'perms': 'public'
+        }
+        
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            for command, perm_level in defaults.items():
+                cursor.execute('''
+                    INSERT OR IGNORE INTO command_permissions (guild_id, command_name, permission_level) 
+                    VALUES (?, ?, ?)
+                ''', (guild_id, command, perm_level))
             
             conn.commit()
             conn.close()

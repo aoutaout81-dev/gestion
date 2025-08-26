@@ -113,31 +113,91 @@ class CrowBot(commands.Bot):
     
     async def check_permissions(self, ctx, command_name):
         """Check if user has permission to use a command"""
+        # Initialize default permissions if not set
+        existing_perms = await self.db.get_all_command_permissions(ctx.guild.id)
+        if not existing_perms:
+            await self.db.initialize_default_permissions(ctx.guild.id)
+        
         # Bot owner always has permission
         if await self.is_owner(ctx.author):
             return True
         
-        # Server owner always has permission
+        # Server owner always has permission  
         if ctx.author == ctx.guild.owner:
             return True
         
-        # Check custom permissions
+        # Check buyer permission
+        if await self.is_buyer_user(ctx.author.id):
+            return True
+        
+        # Check owner permission
+        if await self.is_owner_user(ctx.author.id):
+            command_level = await self.db.get_command_permission_level(ctx.guild.id, command_name)
+            if command_level in ['owner', 'buyer', 'public', 'everyone'] or command_level.startswith('perm'):
+                return True
+        
+        # Get command permission level
+        command_level = await self.db.get_command_permission_level(ctx.guild.id, command_name)
+        if not command_level:
+            return True  # Default allow if no permission set
+        
+        # Check specific command permissions (role/user specific)
+        specific_perms = await self.db.get_command_specific_permissions(ctx.guild.id, command_name)
         user_roles = [role.id for role in ctx.author.roles]
-        allowed_roles = await self.db.get_command_permissions(ctx.guild.id, command_name)
         
-        if allowed_roles:
-            return any(role_id in allowed_roles for role_id in user_roles)
+        # Check if user has specific permission for this command
+        if ctx.author.id in specific_perms.get('users', []):
+            return True
         
-        # Default: only administrators can use moderation commands
-        moderation_commands = [
-            'ban', 'unban', 'kick', 'mute', 'unmute', 'warn', 'clear', 
-            'lock', 'unlock', 'setperm', 'unsetperm', 'resetperms'
-        ]
+        # Check if user has role with specific permission for this command
+        if any(role_id in specific_perms.get('roles', []) for role_id in user_roles):
+            return True
         
-        if command_name in moderation_commands:
-            return ctx.author.guild_permissions.administrator
+        # Handle special permission levels
+        if command_level == 'everyone':
+            return True
         
-        return True
+        if command_level == 'public':
+            return True  # TODO: Add public channel check if needed
+        
+        if command_level == 'owner':
+            return await self.is_owner_user(ctx.author.id)
+        
+        if command_level == 'buyer':
+            return await self.is_buyer_user(ctx.author.id)
+        
+        # Handle permission levels (perm1-perm9)
+        if command_level.startswith('perm'):
+            try:
+                required_level = int(command_level[4:])  # Extract number from "perm1", "perm2", etc.
+                user_max_level = await self.get_user_max_permission_level(ctx.author, ctx.guild.id)
+                
+                # Hierarchical: higher levels include lower levels
+                return user_max_level >= required_level
+            except (ValueError, TypeError):
+                return False
+        
+        return False
+    
+    async def get_user_max_permission_level(self, user, guild_id):
+        """Get user's highest permission level"""
+        # Get all permission levels for the guild
+        permission_levels = await self.db.get_permission_levels(guild_id)
+        
+        user_roles = [role.id for role in user.roles]
+        max_level = 0
+        
+        for level, data in permission_levels.items():
+            # Check if user has this level through role or direct assignment
+            has_level = (
+                user.id in data.get('users', []) or
+                any(role_id in data.get('roles', []) for role_id in user_roles)
+            )
+            
+            if has_level and level > max_level:
+                max_level = level
+        
+        return max_level
     
     async def check_cooldown(self, ctx, command_name):
         """Check if command is on cooldown for user"""
