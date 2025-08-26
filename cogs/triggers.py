@@ -133,18 +133,18 @@ class Triggers(commands.Cog):
 
         print(f"[✅] {len(message.attachments)} pièce(s) jointe(s) trouvée(s)")
 
-        # Vérifier que c'est un fichier image
+        # Vérifier que c'est un fichier média (image ou vidéo)
         attachment = message.attachments[0]
-        image_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
+        media_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp', '.mp4', '.mov', '.avi', '.mkv', '.webm', '.m4v')
         print(f"[🔍] Vérification fichier: {attachment.filename}")
         print(f"[🔍] Taille: {attachment.size} bytes")
         print(f"[🔍] Content type: {getattr(attachment, 'content_type', 'N/A')}")
 
-        if not any(attachment.filename.lower().endswith(ext) for ext in image_extensions):
-            print(f"[❌] Fichier n'est pas une image: {attachment.filename}")
+        if not any(attachment.filename.lower().endswith(ext) for ext in media_extensions):
+            print(f"[❌] Fichier n'est pas un média supporté: {attachment.filename}")
             return
 
-        print(f"[✅] Image valide détectée: {attachment.filename}")
+        print(f"[✅] Média valide détecté: {attachment.filename}")
 
         # Attendre un peu pour éviter les conflits de rate limiting
         await asyncio.sleep(0.5)
