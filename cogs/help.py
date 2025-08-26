@@ -22,7 +22,7 @@ class HelpCommand(commands.Cog):
                 await self._send_roles_help(ctx)
             else:
                 embed = discord.Embed(
-                    title="❌ Catégorie introuvable",
+                    title="Catégorie introuvable",
                     description="Catégories disponibles : `administration`, `moderation`, `roles`",
                     color=self.bot.config.error_color
                 )
@@ -31,31 +31,31 @@ class HelpCommand(commands.Cog):
         
         # Menu principal
         embed = discord.Embed(
-            title="📚 CrowBot Gestion V2 - Aide",
+            title="chdfz gestion - Aide",
             description="Choisissez une catégorie pour voir les commandes disponibles.",
             color=self.bot.config.embed_color
         )
         
         embed.add_field(
-            name="🎛️ Administration",
+            name="Administration",
             value="`+help administration` - Gestion des permissions et configuration",
             inline=False
         )
         
         embed.add_field(
-            name="🔨 Modération", 
+            name="Modération", 
             value="`+help moderation` - Commandes de modération des membres",
             inline=False
         )
         
         embed.add_field(
-            name="👑 Gestion des Rôles", 
+            name="Gestion des Rôles", 
             value="`+help roles` - Commandes de gestion des rôles",
             inline=False
         )
         
         embed.add_field(
-            name="ℹ️ Informations",
+            name="Informations",
             value=f"Préfixe actuel : `+`\n"
                   f"Serveurs : {len(self.bot.guilds)}\n"
                   f"Version : 2.0",
@@ -69,7 +69,7 @@ class HelpCommand(commands.Cog):
     async def _send_admin_help(self, ctx):
         """Envoie l'aide pour les commandes d'administration"""
         embed = discord.Embed(
-            title="🎛️ Commandes d'Administration",
+            title="Commandes d'Administration",
             description="Gestion des permissions et configuration du bot",
             color=self.bot.config.embed_color
         )
@@ -91,7 +91,7 @@ class HelpCommand(commands.Cog):
                 inline=False
             )
         
-        embed.set_footer(text="⚠️ Ces commandes nécessitent les permissions d'administrateur")
+        embed.set_footer(text="Ces commandes nécessitent les permissions d'administrateur")
         
         await ctx.send(embed=embed)
     

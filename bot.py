@@ -21,7 +21,7 @@ class CrowBot(commands.Bot):
         
         self.db = Database()
         self.config = Config()
-        self.logger = logging.getLogger('CrowBot')
+        self.logger = logging.getLogger('chdfz gestion')
         
     async def get_prefix(self, message):
         """Get the prefix for a guild"""

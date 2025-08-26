@@ -17,7 +17,7 @@ class Administration(commands.Cog):
         try:
             await self.bot.db.set_command_permission(ctx.guild.id, command_name.lower(), role.id)
             
-            await ctx.send(f"✅ Rôle {role.mention} peut utiliser `{command_name}`.")
+            await ctx.send(f"Rôle {role.mention} peut utiliser `{command_name}`")
             
             # Log the action
             await self.bot.db.log_moderation_action(
@@ -40,7 +40,7 @@ class Administration(commands.Cog):
         try:
             await self.bot.db.remove_command_permission(ctx.guild.id, command_name.lower(), role.id)
             
-            await ctx.send(f"✅ Rôle {role.mention} ne peut plus utiliser `{command_name}`.")
+            await ctx.send(f"Rôle {role.mention} ne peut plus utiliser `{command_name}`")
             
             # Log the action
             await self.bot.db.log_moderation_action(
@@ -64,21 +64,21 @@ class Administration(commands.Cog):
             permissions = await self.bot.db.get_all_permissions(ctx.guild.id)
             
             embed = discord.Embed(
-                title="📋 Permissions du Serveur",
+                title="Permissions du Serveur",
                 description="Configuration des permissions par commande",
                 color=self.bot.config.embed_color
             )
             
             if not permissions:
                 embed.add_field(
-                    name="ℹ️ Aucune permission personnalisée",
+                    name="Aucune permission personnalisée",
                     value="Toutes les commandes utilisent les permissions par défaut.\n\n" +
                           "**Permissions par défaut :**\n" +
-                          "🔰 **Modération :** ban, kick, warn, mute, clear\n" +
-                          "⚙️ **Administration :** setperm, resetperms, settings\n" +
-                          "👑 **Ownership :** massrole, say, dm, laisse\n" +
-                          "💎 **Buyer :** owner, buyer\n" +
-                          "📖 **Public :** help, ping",
+                          "**Modération :** ban, kick, warn, mute, clear\n" +
+                          "**Administration :** setperm, resetperms, settings\n" +
+                          "**Ownership :** massrole, say, dm, laisse\n" +
+                          "**Buyer :** owner, buyer\n" +
+                          "**Public :** help, ping",
                     inline=False
                 )
             else:
@@ -109,33 +109,33 @@ class Administration(commands.Cog):
                 
                 if moderation_cmds:
                     embed.add_field(
-                        name="🔰 Modération",
+                        name="Modération",
                         value="\n".join(moderation_cmds),
                         inline=False
                     )
                 
                 if administration_cmds:
                     embed.add_field(
-                        name="⚙️ Administration",
+                        name="Administration",
                         value="\n".join(administration_cmds),
                         inline=False
                     )
                 
                 if ownership_cmds:
                     embed.add_field(
-                        name="👑 Ownership",
+                        name="Ownership",
                         value="\n".join(ownership_cmds),
                         inline=False
                     )
                 
                 if other_cmds:
                     embed.add_field(
-                        name="📝 Autres",
+                        name="Autres",
                         value="\n".join(other_cmds),
                         inline=False
                     )
             
-            embed.set_footer(text="💡 Utilisez +setperm <commande> <rôle> pour modifier les permissions")
+            embed.set_footer(text="Utilisez +setperm <commande> <rôle> pour modifier les permissions")
             await ctx.send(embed=embed)
             
         except Exception as e:
@@ -154,7 +154,7 @@ class Administration(commands.Cog):
             await self.bot.db.reset_permissions(ctx.guild.id)
             
             embed = discord.Embed(
-                title="✅ Permissions Reset",
+                title="Permissions Reset",
                 description="All command permissions have been reset to default.",
                 color=self.bot.config.success_color
             )
@@ -191,7 +191,7 @@ class Administration(commands.Cog):
             await self.bot.db.set_command_cooldown(ctx.guild.id, command_name.lower(), seconds)
             
             embed = discord.Embed(
-                title="✅ Cooldown Set",
+                title="Cooldown Set",
                 description=f"Command `{command_name}` now has a {seconds} second cooldown.",
                 color=self.bot.config.success_color
             )
@@ -219,7 +219,7 @@ class Administration(commands.Cog):
             prefix = await self.bot.db.get_guild_prefix(ctx.guild.id) or self.bot.config.default_prefix
             
             embed = discord.Embed(
-                title="⚙️ Server Settings",
+                title="Paramètres du Serveur",
                 color=self.bot.config.embed_color
             )
             

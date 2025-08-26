@@ -1,7 +1,7 @@
-# CrowBot Gestion V2 - Discord Bot
+# chdfz gestion - Discord Bot
 
 ## Overview
-CrowBot est un bot Discord de modération avancée avec système de gestion hiérarchique et fonctionnalités anti-raid. Le bot utilise Python avec discord.py et une base de données SQLite pour la persistance.
+chdfz gestion est un bot Discord de modération avancée avec système de gestion hiérarchique et fonctionnalités anti-raid. Le bot utilise Python avec discord.py et une base de données SQLite pour la persistance.
 
 ## Recent Changes (25 août 2025)
 - ✅ Migration vers Replit complétée

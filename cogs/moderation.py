@@ -19,7 +19,7 @@ class Moderation(commands.Cog):
         """Ban a member from the server"""
         if member == ctx.author:
             embed = discord.Embed(
-                title="❌ Erreur",
+                title="Erreur",
                 description="Vous ne pouvez pas vous bannir vous-même.",
                 color=self.bot.config.error_color
             )
@@ -28,7 +28,7 @@ class Moderation(commands.Cog):
         
         if member.top_role >= ctx.author.top_role and ctx.author != ctx.guild.owner:
             embed = discord.Embed(
-                title="❌ Erreur",
+                title="Erreur",
                 description="Vous ne pouvez pas bannir quelqu'un avec un rôle supérieur ou égal.",
                 color=self.bot.config.error_color
             )
@@ -62,7 +62,7 @@ class Moderation(commands.Cog):
             )
             
             embed = discord.Embed(
-                title="🔨 Utilisateur banni",
+                title="Utilisateur banni",
                 description=f"**{member}** a été banni.",
                 color=self.bot.config.success_color
             )
@@ -72,14 +72,14 @@ class Moderation(commands.Cog):
             
         except discord.Forbidden:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="I don't have permission to ban this user.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to ban user: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -98,7 +98,7 @@ class Moderation(commands.Cog):
             )
             
             embed = discord.Embed(
-                title="✅ Utilisateur débanni",
+                title="Utilisateur débanni",
                 description=f"**{user}** a été débanni.",
                 color=self.bot.config.success_color
             )
@@ -107,14 +107,14 @@ class Moderation(commands.Cog):
             
         except discord.NotFound:
             embed = discord.Embed(
-                title="❌ Erreur",
+                title="Erreur",
                 description="Utilisateur introuvable ou non banni.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to unban user: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -126,7 +126,7 @@ class Moderation(commands.Cog):
         """Kick a member from the server"""
         if member == ctx.author:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="You cannot kick yourself.",
                 color=self.bot.config.error_color
             )
@@ -135,7 +135,7 @@ class Moderation(commands.Cog):
         
         if member.top_role >= ctx.author.top_role and ctx.author != ctx.guild.owner:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="You cannot kick someone with a higher or equal role.",
                 color=self.bot.config.error_color
             )
@@ -179,14 +179,14 @@ class Moderation(commands.Cog):
             
         except discord.Forbidden:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="I don't have permission to kick this user.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to kick user: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -198,7 +198,7 @@ class Moderation(commands.Cog):
         """Mute a member (prevent them from sending messages)"""
         if member == ctx.author:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="You cannot mute yourself.",
                 color=self.bot.config.error_color
             )
@@ -207,7 +207,7 @@ class Moderation(commands.Cog):
         
         if member.top_role >= ctx.author.top_role and ctx.author != ctx.guild.owner:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="You cannot mute someone with a higher or equal role.",
                 color=self.bot.config.error_color
             )
@@ -227,7 +227,7 @@ class Moderation(commands.Cog):
             mute_role = await get_mute_role(ctx.guild)
             if not mute_role:
                 embed = discord.Embed(
-                    title="❌ Error",
+                    title="Erreur",
                     description="Failed to create mute role. Check bot permissions.",
                     color=self.bot.config.error_color
                 )
@@ -268,14 +268,14 @@ class Moderation(commands.Cog):
             
         except discord.Forbidden:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="I don't have permission to mute this user.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to mute user: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -290,7 +290,7 @@ class Moderation(commands.Cog):
             is_muted = await self.bot.db.is_user_muted(ctx.guild.id, member.id)
             if not is_muted:
                 embed = discord.Embed(
-                    title="❌ Error",
+                    title="Erreur",
                     description="This user is not muted.",
                     color=self.bot.config.error_color
                 )
@@ -314,7 +314,7 @@ class Moderation(commands.Cog):
             
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to unmute user: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -366,7 +366,7 @@ class Moderation(commands.Cog):
             
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to retrieve muted users: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -378,7 +378,7 @@ class Moderation(commands.Cog):
         """Give a warning to a member"""
         if member == ctx.author:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="You cannot warn yourself.",
                 color=self.bot.config.error_color
             )
@@ -409,11 +409,11 @@ class Moderation(commands.Cog):
             except:
                 pass  # User has DMs disabled
             
-            await ctx.send(f"⚠️ **{member}** a été averti. Raison: {reason}")
+            await ctx.send(f"**{member}** a été averti. Raison: {reason}")
             
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to warn user: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -428,13 +428,13 @@ class Moderation(commands.Cog):
             warnings = await self.bot.db.get_user_warnings(ctx.guild.id, member.id)
             
             if not warnings:
-                await ctx.send(f"❌ **{member}** n'a aucun avertissement actif.")
+                await ctx.send(f"**{member}** n'a aucun avertissement actif.")
                 return
             
             # If no warning ID provided, show list of warnings
             if warning_id is None:
                 embed = discord.Embed(
-                    title="⚠️ Avertissements Actifs",
+                    title="Avertissements Actifs",
                     description=f"Avertissements pour **{member}**\\n\\n"
                                f"Utilisez `+delwarn {member.mention} <ID>` pour supprimer un avertissement.",
                     color=self.bot.config.warning_color
@@ -461,7 +461,7 @@ class Moderation(commands.Cog):
             # Validate that the warning belongs to this user
             warning_exists = any(w['id'] == warning_id for w in warnings)
             if not warning_exists:
-                await ctx.send(f"❌ Aucun avertissement avec l'ID `{warning_id}` trouvé pour **{member}**.")
+                await ctx.send(f"Aucun avertissement avec l'ID `{warning_id}` trouvé pour **{member}**.")
                 return
             
             # Remove the warning
@@ -473,13 +473,13 @@ class Moderation(commands.Cog):
                     f"Removed warning ID {warning_id}"
                 )
                 
-                await ctx.send(f"✅ Avertissement ID `{warning_id}` supprimé pour **{member}**.")
+                await ctx.send(f"Avertissement ID `{warning_id}` supprimé pour **{member}**.")
             else:
-                await ctx.send(f"❌ Impossible de supprimer l'avertissement ID `{warning_id}`.")
+                await ctx.send(f"Impossible de supprimer l'avertissement ID `{warning_id}`.")
             
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Erreur",
+                title="Erreur",
                 description=f"Erreur lors de la suppression de l'avertissement: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -494,7 +494,7 @@ class Moderation(commands.Cog):
             
             if not infractions:
                 embed = discord.Embed(
-                    title="📋 User Infractions",
+                    title="Infractions de l'utilisateur",
                     description=f"**{member}** has no infractions.",
                     color=self.bot.config.embed_color
                 )
@@ -502,7 +502,7 @@ class Moderation(commands.Cog):
                 return
             
             embed = discord.Embed(
-                title="📋 User Infractions",
+                title="Infractions de l'utilisateur",
                 description=f"Infractions for **{member}**",
                 color=self.bot.config.embed_color
             )
@@ -531,7 +531,7 @@ class Moderation(commands.Cog):
             
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to retrieve infractions: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -543,7 +543,7 @@ class Moderation(commands.Cog):
         """Clear a specified number of messages"""
         if amount <= 0 or amount > 100:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="Amount must be between 1 and 100.",
                 color=self.bot.config.error_color
             )
@@ -564,14 +564,14 @@ class Moderation(commands.Cog):
             
         except discord.Forbidden:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="I don't have permission to delete messages.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to clear messages: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -603,14 +603,14 @@ class Moderation(commands.Cog):
             
         except discord.Forbidden:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="I don't have permission to manage this channel.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to lock channel: {str(e)}",
                 color=self.bot.config.error_color
             )
@@ -642,14 +642,14 @@ class Moderation(commands.Cog):
             
         except discord.Forbidden:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description="I don't have permission to manage this channel.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
         except Exception as e:
             embed = discord.Embed(
-                title="❌ Error",
+                title="Erreur",
                 description=f"Failed to unlock channel: {str(e)}",
                 color=self.bot.config.error_color
             )

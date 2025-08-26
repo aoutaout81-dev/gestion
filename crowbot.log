@@ -2449,3 +2449,36 @@ AttributeError: 'Database' object has no attribute 'get_guild_prefix'
 2025-08-26 10:11:19,035 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: fc5c57d067fbbc5a13c0fca439680fc9).
 2025-08-26 10:11:21,056 - CrowBot - INFO - Manon Gestion has connected to Discord!
 2025-08-26 10:11:21,056 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-26 10:14:15,140 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 10:14:15,142 - discord.client - INFO - logging in using static token
+2025-08-26 10:14:15,578 - CrowBot - ERROR - Failed to load cog cogs.administration: Extension 'cogs.administration' raised an error: SyntaxError: invalid syntax. Perhaps you forgot a comma? (administration.py, line 194)
+2025-08-26 10:14:15,596 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-26 10:14:15,598 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-26 10:14:15,599 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 10:14:15,599 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-26 10:14:15,602 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-26 10:14:15,808 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 1eb77f0986e6ad205ed45fd087531835).
+2025-08-26 10:14:17,827 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-26 10:14:17,827 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-26 10:15:02,806 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 10:15:02,807 - discord.client - INFO - logging in using static token
+2025-08-26 10:15:03,168 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-26 10:15:03,170 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-26 10:15:03,171 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-26 10:15:03,172 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 10:15:03,172 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-26 10:15:03,174 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-26 10:15:03,371 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 056fc0deab324bafdf8d14f176e24bb3).
+2025-08-26 10:15:05,390 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-26 10:15:05,390 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-26 10:15:43,091 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 10:15:43,092 - discord.client - INFO - logging in using static token
+2025-08-26 10:15:43,495 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 10:15:43,498 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 10:15:43,499 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 10:15:43,500 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 10:15:43,500 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 10:15:43,503 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 10:15:43,715 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: e6670d4dbefb9514ded9a9d19583318f).
+2025-08-26 10:15:45,746 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 10:15:45,746 - chdfz gestion - INFO - Bot is in 2 guilds
