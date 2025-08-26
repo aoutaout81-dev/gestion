@@ -2427,3 +2427,25 @@ AttributeError: 'Database' object has no attribute 'get_guild_prefix'
 2025-08-25 20:17:17,011 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: e4f1b67c25f6fc22b0c868adde8a7a98).
 2025-08-25 20:17:19,039 - CrowBot - INFO - Manon Gestion has connected to Discord!
 2025-08-25 20:17:19,039 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-26 10:09:49,395 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 10:09:49,395 - discord.client - INFO - logging in using static token
+2025-08-26 10:09:49,832 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-26 10:09:49,848 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-26 10:09:49,852 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-26 10:09:49,856 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 10:09:49,858 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-26 10:09:49,866 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-26 10:09:50,325 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4f333ad9a698e2e3bbe1442cf4bf7d46).
+2025-08-26 10:09:52,353 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-26 10:09:52,353 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-26 10:11:18,374 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 10:11:18,374 - discord.client - INFO - logging in using static token
+2025-08-26 10:11:18,783 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-26 10:11:18,792 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-26 10:11:18,794 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-26 10:11:18,795 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 10:11:18,795 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-26 10:11:18,798 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-26 10:11:19,035 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: fc5c57d067fbbc5a13c0fca439680fc9).
+2025-08-26 10:11:21,056 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-26 10:11:21,056 - CrowBot - INFO - Bot is in 2 guilds

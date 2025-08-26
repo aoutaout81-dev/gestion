@@ -676,6 +676,60 @@ class Database:
             
             return infractions
     
+    async def get_user_warnings(self, guild_id: int, user_id: int) -> List[Dict[str, Any]]:
+        """Get all warnings for a user with IDs"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                SELECT id, reason, created_at, moderator_id 
+                FROM infractions 
+                WHERE guild_id = ? AND user_id = ? AND infraction_type = 'warn' AND active = 1
+                ORDER BY created_at DESC
+            ''', (guild_id, user_id))
+            
+            results = cursor.fetchall()
+            conn.close()
+            
+            warnings = []
+            for result in results:
+                warnings.append({
+                    'id': result[0],
+                    'reason': result[1],
+                    'created_at': result[2],
+                    'moderator_id': result[3]
+                })
+            
+            return warnings
+    
+    async def remove_warning(self, guild_id: int, warning_id: int) -> bool:
+        """Remove a specific warning by ID"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            # First check if the warning exists and is active
+            cursor.execute('''
+                SELECT user_id FROM infractions 
+                WHERE id = ? AND guild_id = ? AND infraction_type = 'warn' AND active = 1
+            ''', (warning_id, guild_id))
+            
+            result = cursor.fetchone()
+            if not result:
+                conn.close()
+                return False
+            
+            # Mark the warning as inactive instead of deleting
+            cursor.execute('''
+                UPDATE infractions SET active = 0 
+                WHERE id = ? AND guild_id = ?
+            ''', (warning_id, guild_id))
+            
+            conn.commit()
+            conn.close()
+            return True
+    
     # Mute methods
     async def add_mute(self, guild_id: int, user_id: int, muted_until: Optional[float], 
                       reason: str, moderator_id: int):

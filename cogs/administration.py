@@ -63,17 +63,30 @@ class Administration(commands.Cog):
         try:
             permissions = await self.bot.db.get_all_permissions(ctx.guild.id)
             
+            embed = discord.Embed(
+                title="📋 Permissions du Serveur",
+                description="Configuration des permissions par commande",
+                color=self.bot.config.embed_color
+            )
+            
             if not permissions:
-                embed = discord.Embed(
-                    title="📋 Command Permissions",
-                    description="No custom permissions set. All commands use default permissions.",
-                    color=self.bot.config.embed_color
+                embed.add_field(
+                    name="ℹ️ Aucune permission personnalisée",
+                    value="Toutes les commandes utilisent les permissions par défaut.\n\n" +
+                          "**Permissions par défaut :**\n" +
+                          "🔰 **Modération :** ban, kick, warn, mute, clear\n" +
+                          "⚙️ **Administration :** setperm, resetperms, settings\n" +
+                          "👑 **Ownership :** massrole, say, dm, laisse\n" +
+                          "💎 **Buyer :** owner, buyer\n" +
+                          "📖 **Public :** help, ping",
+                    inline=False
                 )
             else:
-                embed = discord.Embed(
-                    title="📋 Command Permissions",
-                    color=self.bot.config.embed_color
-                )
+                # Organize commands by category
+                moderation_cmds = []
+                administration_cmds = []
+                ownership_cmds = []
+                other_cmds = []
                 
                 for command_name, role_ids in permissions.items():
                     roles = []
@@ -83,12 +96,46 @@ class Administration(commands.Cog):
                             roles.append(role.mention)
                     
                     if roles:
-                        embed.add_field(
-                            name=f"`{command_name}`",
-                            value=", ".join(roles),
-                            inline=False
-                        )
+                        cmd_info = f"`{command_name}` → {', '.join(roles)}"
+                        
+                        if command_name in ['ban', 'kick', 'warn', 'mute', 'unmute', 'clear', 'delwarn']:
+                            moderation_cmds.append(cmd_info)
+                        elif command_name in ['setperm', 'unsetperm', 'resetperms', 'settings', 'cooldown']:
+                            administration_cmds.append(cmd_info)
+                        elif command_name in ['massrole', 'say', 'dm', 'laisse', 'unlaisse', 'wl', 'unwl', 'blrank']:
+                            ownership_cmds.append(cmd_info)
+                        else:
+                            other_cmds.append(cmd_info)
+                
+                if moderation_cmds:
+                    embed.add_field(
+                        name="🔰 Modération",
+                        value="\n".join(moderation_cmds),
+                        inline=False
+                    )
+                
+                if administration_cmds:
+                    embed.add_field(
+                        name="⚙️ Administration",
+                        value="\n".join(administration_cmds),
+                        inline=False
+                    )
+                
+                if ownership_cmds:
+                    embed.add_field(
+                        name="👑 Ownership",
+                        value="\n".join(ownership_cmds),
+                        inline=False
+                    )
+                
+                if other_cmds:
+                    embed.add_field(
+                        name="📝 Autres",
+                        value="\n".join(other_cmds),
+                        inline=False
+                    )
             
+            embed.set_footer(text="💡 Utilisez +setperm <commande> <rôle> pour modifier les permissions")
             await ctx.send(embed=embed)
             
         except Exception as e:

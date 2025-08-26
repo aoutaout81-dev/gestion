@@ -419,6 +419,72 @@ class Moderation(commands.Cog):
             )
             await ctx.send(embed=embed)
     
+    @commands.command(name="delwarn")
+    @has_permission()
+    async def delete_warning(self, ctx, member: MemberConverter, warning_id: int = None):
+        """Delete a specific warning for a member. Use warning ID or leave empty to see warnings."""
+        try:
+            # Get user's warnings
+            warnings = await self.bot.db.get_user_warnings(ctx.guild.id, member.id)
+            
+            if not warnings:
+                await ctx.send(f"❌ **{member}** n'a aucun avertissement actif.")
+                return
+            
+            # If no warning ID provided, show list of warnings
+            if warning_id is None:
+                embed = discord.Embed(
+                    title="⚠️ Avertissements Actifs",
+                    description=f"Avertissements pour **{member}**\\n\\n"
+                               f"Utilisez `+delwarn {member.mention} <ID>` pour supprimer un avertissement.",
+                    color=self.bot.config.warning_color
+                )
+                
+                for i, warning in enumerate(warnings[:10], 1):  # Limit to 10 warnings
+                    moderator = await get_or_fetch_user(self.bot, warning['moderator_id'])
+                    moderator_name = str(moderator) if moderator else "Modérateur inconnu"
+                    
+                    embed.add_field(
+                        name=f"ID: {warning['id']} (#{i})",
+                        value=f"**Raison:** {warning['reason'] or 'Aucune raison'}\\n"
+                              f"**Par:** {moderator_name}\\n"
+                              f"**Date:** {warning['created_at']}",
+                        inline=False
+                    )
+                
+                if len(warnings) > 10:
+                    embed.set_footer(text=f"Affichage de 10 sur {len(warnings)} avertissements")
+                
+                await ctx.send(embed=embed)
+                return
+            
+            # Validate that the warning belongs to this user
+            warning_exists = any(w['id'] == warning_id for w in warnings)
+            if not warning_exists:
+                await ctx.send(f"❌ Aucun avertissement avec l'ID `{warning_id}` trouvé pour **{member}**.")
+                return
+            
+            # Remove the warning
+            success = await self.bot.db.remove_warning(ctx.guild.id, warning_id)
+            if success:
+                # Log the action
+                await self.bot.db.log_moderation_action(
+                    ctx.guild.id, member.id, ctx.author.id, "delwarn", 
+                    f"Removed warning ID {warning_id}"
+                )
+                
+                await ctx.send(f"✅ Avertissement ID `{warning_id}` supprimé pour **{member}**.")
+            else:
+                await ctx.send(f"❌ Impossible de supprimer l'avertissement ID `{warning_id}`.")
+            
+        except Exception as e:
+            embed = discord.Embed(
+                title="❌ Erreur",
+                description=f"Erreur lors de la suppression de l'avertissement: {str(e)}",
+                color=self.bot.config.error_color
+            )
+            await ctx.send(embed=embed)
+    
     @commands.command(name="infractions")
     @has_permission()
     async def show_infractions(self, ctx, member: MemberConverter):
