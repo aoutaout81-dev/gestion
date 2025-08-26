@@ -2588,3 +2588,25 @@ Traceback (most recent call last):
   File "/home/runner/workspace/database.py", line 665, in get_all_command_permissions
     cursor.execute('''
 sqlite3.OperationalError: no such column: permission_level
+2025-08-26 14:04:17,931 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:04:17,931 - discord.client - INFO - logging in using static token
+2025-08-26 14:04:18,398 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:04:18,406 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:04:18,409 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:04:18,412 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:04:18,414 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:04:18,420 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:04:18,650 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 8c5a490cc82258a05f890abc171f9a3d).
+2025-08-26 14:04:20,669 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:04:20,669 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:04:23,909 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:04:23,909 - discord.client - INFO - logging in using static token
+2025-08-26 14:04:24,234 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:04:24,237 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:04:24,239 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:04:24,240 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:04:24,241 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:04:24,244 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:04:24,503 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4e870fb77671e7d8c28c216f45e8fe62).
+2025-08-26 14:04:26,529 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:04:26,530 - chdfz gestion - INFO - Bot is in 2 guilds
