@@ -51,6 +51,7 @@ class Triggers(commands.Cog):
         await self.handle_selfie_embed(message)
 
     async def handle_blocked_channels(self, message: discord.Message):
+        """Gère les salons protégés où seuls les threads sont autorisés"""
         if message.channel.id not in self.config["protected_channels"]:
             return
         if isinstance(message.channel, discord.Thread):
