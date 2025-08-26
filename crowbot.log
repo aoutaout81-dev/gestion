@@ -1,0 +1,2429 @@
+2025-08-25 19:31:04,439 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-25 19:31:08,754 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-25 19:31:16,600 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-25 20:02:53,985 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-25 20:03:04,307 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-25 20:03:25,692 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-25 20:04:23,473 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-25 20:04:39,489 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-25 20:05:03,435 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-25 20:05:03,435 - discord.client - INFO - logging in using static token
+2025-08-25 20:05:04,025 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-25 20:05:04,035 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-25 20:05:04,039 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-25 20:05:04,042 - CrowBot - INFO - Loaded cog: cogs.help
+2025-08-25 20:05:04,043 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-25 20:05:04,049 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-25 20:05:04,326 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: f7bf14032972316aec0cdb8db0c1ecff).
+2025-08-25 20:05:06,351 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-25 20:05:06,352 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-25 20:05:08,554 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:08,558 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:08,776 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:08,777 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:12,474 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:12,475 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:15,808 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:15,809 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:15,983 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:15,984 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:19,553 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:19,554 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:19,652 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:19,653 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:22,414 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:22,415 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:30,182 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:30,182 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:30,496 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:30,497 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:37,264 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:37,264 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:37,541 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:37,542 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:42,979 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:42,980 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:46,217 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:46,217 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:49,391 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:49,391 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:50,154 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:50,155 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:51,717 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:51,718 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:55,597 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:55,598 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:58,297 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:05:58,297 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:10,897 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:10,898 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:12,212 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:12,213 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:13,438 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:13,439 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:15,677 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:15,677 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:16,262 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:16,262 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:20,353 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:20,354 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:21,574 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:21,575 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:24,033 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:24,033 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:26,848 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:26,849 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:28,998 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:28,999 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:35,264 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:35,264 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:35,703 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:35,705 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:38,295 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:38,296 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:39,377 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:39,378 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:39,459 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:39,460 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:43,160 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:43,161 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:45,352 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:45,353 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:51,036 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:51,037 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:52,176 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:52,177 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:52,847 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:52,847 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:57,660 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:06:57,660 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:00,182 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:00,183 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:01,950 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:01,950 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:03,274 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:03,275 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:04,719 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:04,721 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:05,475 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:05,476 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:08,790 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:08,792 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:09,535 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:09,536 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:12,655 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:12,656 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:13,273 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:13,274 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:14,539 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:14,540 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:14,852 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:14,853 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:17,584 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:17,584 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:18,417 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:18,418 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:21,556 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:21,557 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:23,166 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:23,167 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:24,373 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:24,374 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:28,482 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:28,483 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:28,532 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:28,533 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:34,595 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:34,596 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:36,855 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:36,856 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:41,707 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:41,708 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:48,637 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:48,638 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:49,122 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:49,123 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:51,344 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:07:51,345 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:03,047 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:03,048 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:04,024 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:04,025 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:06,886 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:06,886 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:09,162 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:09,162 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:11,450 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:11,450 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:11,494 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:11,495 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:18,429 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:18,429 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:19,381 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:19,382 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:21,354 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1421, in on_message
+    await self.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:21,356 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 57, in on_message
+    await self.bot.process_commands(message)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1416, in process_commands
+    ctx = await self.get_context(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1315, in get_context
+    prefix = await self.get_prefix(origin)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/bot.py", line 31, in get_prefix
+    prefix = await self.db.get_guild_prefix(message.guild.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_guild_prefix'
+2025-08-25 20:08:22,528 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-25 20:08:22,528 - discord.client - INFO - logging in using static token
+2025-08-25 20:08:22,951 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-25 20:08:22,953 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-25 20:08:22,954 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-25 20:08:22,956 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-25 20:08:22,957 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-25 20:08:22,959 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-25 20:08:23,190 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 6540e907623d6842463b92f5d4b92339).
+2025-08-25 20:08:25,217 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-25 20:08:25,217 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-25 20:09:18,024 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-25 20:09:18,024 - discord.client - INFO - logging in using static token
+2025-08-25 20:09:18,401 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-25 20:09:18,404 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-25 20:09:18,405 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-25 20:09:18,406 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-25 20:09:18,408 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-25 20:09:18,412 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-25 20:09:18,672 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: efa0ced831b3e2ee5e1ad4c7cb692869).
+2025-08-25 20:09:20,693 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-25 20:09:20,693 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-25 20:09:52,650 - CrowBot - ERROR - Unhandled error in command laisse: The check functions for command laisse failed.
+2025-08-25 20:10:15,738 - CrowBot - ERROR - Unhandled error in command say: The check functions for command say failed.
+2025-08-25 20:10:37,557 - CrowBot - ERROR - Unhandled error in command owner: The check functions for command owner failed.
+2025-08-25 20:11:08,454 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-25 20:11:08,457 - discord.client - INFO - logging in using static token
+2025-08-25 20:11:08,869 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-25 20:11:08,872 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-25 20:11:08,873 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-25 20:11:08,874 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-25 20:11:08,874 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-25 20:11:08,881 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-25 20:11:09,296 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 76174ea7a14d4ead91dcaacde1ac6687).
+2025-08-25 20:11:11,324 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-25 20:11:11,324 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-25 20:11:55,784 - CrowBot - ERROR - Unhandled error in command setupbuyer: You do not own this bot.
+2025-08-25 20:13:31,788 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-25 20:13:31,789 - discord.client - INFO - logging in using static token
+2025-08-25 20:13:32,170 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-25 20:13:32,173 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-25 20:13:32,177 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-25 20:13:32,180 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-25 20:13:32,180 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-25 20:13:32,187 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-25 20:13:32,612 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: e924bee9dbd396e195004be9a1a7bf7e).
+2025-08-25 20:13:34,634 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-25 20:13:34,635 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-25 20:13:55,898 - CrowBot - ERROR - Unhandled error in command laisse: The check functions for command laisse failed.
+2025-08-25 20:14:34,196 - CrowBot - ERROR - Unhandled error in command owner: The check functions for command owner failed.
+2025-08-25 20:14:42,018 - CrowBot - ERROR - Unhandled error in command setupbuyer: You do not own this bot.
+2025-08-25 20:14:58,578 - CrowBot - ERROR - Unhandled error in command setupbuyer: You do not own this bot.
+2025-08-25 20:15:06,881 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-25 20:15:06,882 - discord.client - INFO - logging in using static token
+2025-08-25 20:15:07,186 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-25 20:15:07,188 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-25 20:15:07,190 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-25 20:15:07,191 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-25 20:15:07,192 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-25 20:15:07,200 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-25 20:15:07,551 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 5c9c9a7fb377fdf5cc51fc2488e25e93).
+2025-08-25 20:15:09,576 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-25 20:15:09,576 - CrowBot - INFO - Bot is in 2 guilds
+2025-08-25 20:17:16,318 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-25 20:17:16,319 - discord.client - INFO - logging in using static token
+2025-08-25 20:17:16,721 - CrowBot - INFO - Loaded cog: cogs.administration
+2025-08-25 20:17:16,723 - CrowBot - INFO - Loaded cog: cogs.moderation
+2025-08-25 20:17:16,725 - CrowBot - INFO - Loaded cog: cogs.roles
+2025-08-25 20:17:16,726 - CrowBot - INFO - Loaded cog: cogs.help_interactive
+2025-08-25 20:17:16,726 - CrowBot - INFO - Loaded cog: cogs.triggers
+2025-08-25 20:17:16,736 - CrowBot - INFO - Loaded cog: cogs.ownership
+2025-08-25 20:17:17,011 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: e4f1b67c25f6fc22b0c868adde8a7a98).
+2025-08-25 20:17:19,039 - CrowBot - INFO - Manon Gestion has connected to Discord!
+2025-08-25 20:17:19,039 - CrowBot - INFO - Bot is in 2 guilds
