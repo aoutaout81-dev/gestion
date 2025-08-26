@@ -2802,3 +2802,72 @@ sqlite3.OperationalError: no such column: permission_level
 2025-08-26 14:53:18,030 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ff8f679a209826cba47d1fe3a3884a2f).
 2025-08-26 14:53:20,052 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
 2025-08-26 14:53:20,052 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:57:28,947 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:57:28,947 - discord.client - INFO - logging in using static token
+2025-08-26 14:57:29,447 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:57:29,450 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:57:29,451 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:57:29,452 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:57:29,454 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:57:29,457 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:57:29,461 - chdfz gestion - ERROR - Failed to load cog cogs.permissions_crowbots: Extension 'cogs.permissions_crowbots' raised an error: CommandRegistrationError: The command perms is already an existing command or alias.
+2025-08-26 14:57:29,704 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ff95a0a8bc0521042f4409ab591a64b8).
+2025-08-26 14:57:31,725 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:57:31,725 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:58:13,984 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:58:13,984 - discord.client - INFO - logging in using static token
+2025-08-26 14:58:14,381 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:58:14,388 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:58:14,389 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:58:14,390 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:58:14,391 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:58:14,393 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:58:14,398 - chdfz gestion - ERROR - Failed to load cog cogs.permissions_crowbots: Extension 'cogs.permissions_crowbots' raised an error: CommandRegistrationError: The command change is already an existing command or alias.
+2025-08-26 14:58:14,822 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ae1be406d498dd4ea3876ffc76c95b97).
+2025-08-26 14:58:16,840 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:58:16,840 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:58:56,644 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:58:56,644 - discord.client - INFO - logging in using static token
+2025-08-26 14:58:57,053 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:58:57,056 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:58:57,058 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:58:57,058 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:58:57,059 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:58:57,062 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:58:57,069 - chdfz gestion - ERROR - Failed to load cog cogs.permissions_crowbots: Extension 'cogs.permissions_crowbots' raised an error: CommandRegistrationError: The alias change is already an existing command or alias.
+2025-08-26 14:58:57,408 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: c6ba5f4de5d16bd149316b9990e44f86).
+2025-08-26 14:58:59,422 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:58:59,422 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 15:00:07,187 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 15:00:07,187 - discord.client - INFO - logging in using static token
+2025-08-26 15:00:07,948 - chdfz gestion - ERROR - Failed to load cog cogs.administration: Extension 'cogs.administration' raised an error: SyntaxError: invalid syntax (administration.py, line 114)
+2025-08-26 15:00:07,953 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 15:00:07,955 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 15:00:07,956 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 15:00:07,957 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 15:00:07,960 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 15:00:08,638 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 28ffc7cca7d18a020eb15cdd24b30369).
+2025-08-26 15:00:10,660 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 15:00:10,661 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 15:02:16,727 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 15:02:16,729 - discord.client - INFO - logging in using static token
+2025-08-26 15:02:17,137 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 15:02:17,139 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 15:02:17,141 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 15:02:17,143 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 15:02:17,144 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 15:02:17,147 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 15:02:17,848 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 73a86800a6050464163659e51eaf3549).
+2025-08-26 15:02:19,872 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 15:02:19,876 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 15:02:53,797 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 15:02:53,803 - discord.client - INFO - logging in using static token
+2025-08-26 15:02:54,353 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 15:02:54,356 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 15:02:54,357 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 15:02:54,358 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 15:02:54,359 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 15:02:54,361 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 15:02:54,626 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 277fb3c1d54d4c4b90368318ce6adeca).
+2025-08-26 15:02:56,649 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 15:02:56,649 - chdfz gestion - INFO - Bot is in 2 guilds

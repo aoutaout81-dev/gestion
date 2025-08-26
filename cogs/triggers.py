@@ -8,7 +8,7 @@ class Triggers(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self._processed_messages: Set[int] = set()
+        self._processed_messages = set()
         
         # Configuration des salons spéciaux
         self.config = {

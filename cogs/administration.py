@@ -13,13 +13,16 @@ class Administration(commands.Cog):
     @commands.command(name="set")
     @admin_only()
     async def set_permission(self, ctx, perm_type: str, level_or_command: str, target: str = None):
-        """Set permission level to role/user or command to permission level
-        Usage: 
+        """Système de permissions CrowBots compatible
+        
+        Usage:
         +set perm <niveau> <@role/@user> - Assigner niveau de permission
-        +set <commande> <niveau> - Déplacer commande vers niveau
+        +set perm <commande> <@role/@user> - Permission spécifique pour commande  
         """
         if perm_type.lower() == "perm":
-            # +set perm <level> <@role/@user>
+            # Deux cas: +set perm <niveau> <@role> OU +set perm <commande> <@role>
+            
+            # Essayer d'abord niveau numérique
             try:
                 level = int(level_or_command)
                 if level < 1 or level > 9:
@@ -27,60 +30,53 @@ class Administration(commands.Cog):
                     return
                 
                 if not target:
-                    await ctx.send("❌ Vous devez mentionner un rôle ou un utilisateur")
+                    await ctx.send("❌ Vous devez mentionner un rôle ou un membre\n💡 Usage: `+set perm <niveau> <@rôle/@membre>`")
                     return
                 
-                # Parse target (role or user)
-                if target.startswith('<@&') and target.endswith('>'):
-                    # Role mention
-                    role_id = int(target[3:-1])
-                    role = ctx.guild.get_role(role_id)
-                    if not role:
-                        await ctx.send("❌ Rôle introuvable")
-                        return
-                    
-                    await self.bot.db.set_permission_level(ctx.guild.id, level, role_id=role_id)
-                    await ctx.send(f"✅ Rôle {role.mention} assigné au niveau de permission {level}")
-                    
-                elif target.startswith('<@') and target.endswith('>'):
-                    # User mention
-                    user_id = int(target[2:-1].replace('!', ''))
-                    user = ctx.guild.get_member(user_id)
-                    if not user:
-                        await ctx.send("❌ Utilisateur introuvable")
-                        return
-                    
-                    await self.bot.db.set_permission_level(ctx.guild.id, level, user_id=user_id)
-                    await ctx.send(f"✅ Utilisateur {user.mention} assigné au niveau de permission {level}")
-                    
-                else:
-                    await ctx.send("❌ Format invalide. Utilisez @role ou @user")
+                # Parser le target
+                role_id, user_id = await self._parse_target(ctx, target)
+                if not role_id and not user_id:
                     return
+                
+                await self.bot.db.set_permission_level(ctx.guild.id, level, role_id=role_id, user_id=user_id)
+                
+                if role_id:
+                    role = ctx.guild.get_role(role_id)
+                    await ctx.send(f"✅ Rôle {role.mention} assigné au **niveau de permission {level}**")
+                else:
+                    user = ctx.guild.get_member(user_id)
+                    await ctx.send(f"✅ Membre {user.mention} assigné au **niveau de permission {level}**")
                 
             except ValueError:
-                await ctx.send("❌ Niveau de permission invalide")
-                return
+                # Cas: +set perm <commande> <@role>
+                command_name = level_or_command.lower()
+                if not target:
+                    await ctx.send("❌ Vous devez mentionner un rôle ou un membre\n💡 Usage: `+set perm <commande> <@rôle/@membre>`")
+                    return
                 
+                role_id, user_id = await self._parse_target(ctx, target)
+                if not role_id and not user_id:
+                    return
+                
+                await self.bot.db.set_command_specific_permission(ctx.guild.id, command_name, role_id=role_id, user_id=user_id)
+                
+                if role_id:
+                    role = ctx.guild.get_role(role_id)
+                    await ctx.send(f"✅ Rôle {role.mention} a maintenant accès à la commande **{command_name}**")
+                else:
+                    user = ctx.guild.get_member(user_id)
+                    await ctx.send(f"✅ Membre {user.mention} a maintenant accès à la commande **{command_name}**")
+        
         else:
-            # +set <command> <permission_level>
-            command_name = perm_type.lower()
-            permission_level = level_or_command.lower()
-            
-            # Validate permission level
-            valid_levels = ['perm1', 'perm2', 'perm3', 'perm4', 'perm5', 'perm6', 'perm7', 'perm8', 'perm9', 'owner', 'buyer', 'public', 'everyone']
-            if permission_level not in valid_levels:
-                await ctx.send(f"❌ Niveau de permission invalide. Utilisez: {', '.join(valid_levels)}")
-                return
-            
-            await self.bot.db.set_command_permission(ctx.guild.id, command_name, permission_level)
-            await ctx.send(f"✅ Commande `{command_name}` déplacée vers `{get_permission_level_name(permission_level)}`")
+            await ctx.send("❌ Usage incorrect. Utilisez: `+set perm <niveau> <@rôle>` ou `+set perm <commande> <@rôle>`")
     
     @commands.command(name="del")
     @admin_only()
     async def delete_permission(self, ctx, perm_type: str, level_or_command: str, target: str = None):
-        """Remove permission level from role/user or reset command permission
+        """Supprimer des permissions CrowBots
+        
         Usage:
-        +del perm <niveau> <@role/@user> - Retirer niveau de permission
+        +del perm <niveau> <@rôle/@membre> - Retirer niveau de permission
         """
         if perm_type.lower() == "perm":
             try:
@@ -93,90 +89,91 @@ class Administration(commands.Cog):
                     await ctx.send("❌ Vous devez mentionner un rôle ou un utilisateur")
                     return
                 
-                # Parse target (role or user)
-                if target.startswith('<@&') and target.endswith('>'):
-                    # Role mention
-                    role_id = int(target[3:-1])
-                    role = ctx.guild.get_role(role_id)
-                    if not role:
-                        await ctx.send("❌ Rôle introuvable")
-                        return
-                    
-                    await self.bot.db.remove_permission_level(ctx.guild.id, level, role_id=role_id)
-                    await ctx.send(f"✅ Rôle {role.mention} retiré du niveau de permission {level}")
-                    
-                elif target.startswith('<@') and target.endswith('>'):
-                    # User mention
-                    user_id = int(target[2:-1].replace('!', ''))
-                    user = ctx.guild.get_member(user_id)
-                    if not user:
-                        await ctx.send("❌ Utilisateur introuvable")
-                        return
-                    
-                    await self.bot.db.remove_permission_level(ctx.guild.id, level, user_id=user_id)
-                    await ctx.send(f"✅ Utilisateur {user.mention} retiré du niveau de permission {level}")
-                    
-                else:
-                    await ctx.send("❌ Format invalide. Utilisez @role ou @user")
+                role_id, user_id = await self._parse_target(ctx, target)
+                if not role_id and not user_id:
                     return
+                
+                await self.bot.db.remove_permission_level(ctx.guild.id, level, role_id=role_id, user_id=user_id)
+                
+                if role_id:
+                    role = ctx.guild.get_role(role_id)
+                    await ctx.send(f"✅ Rôle {role.mention} retiré du **niveau de permission {level}**")
+                else:
+                    user = ctx.guild.get_member(user_id)
+                    await ctx.send(f"✅ Membre {user.mention} retiré du **niveau de permission {level}**")
                 
             except ValueError:
                 await ctx.send("❌ Niveau de permission invalide")
                 return
         else:
-            await ctx.send("❌ Utilisez: `+del perm <niveau> <@role/@user>`")
+            await ctx.send("❌ Usage: `+del perm <niveau> <@rôle/@membre>`")
     
     @commands.command(name="change")
     @admin_only()
-    async def change_command_permission(self, ctx, command_name: str, permission_level: str):
-        """Change command permission level
-        Usage: +change <commande> <niveau>
-        """
-        command_name = command_name.lower()
-        permission_level = permission_level.lower()
+    async def change_command_permission(self, ctx, command_name: str = None, permission_level: str = None):
+        """Changer le niveau de permission d'une commande CrowBots
         
-        # Validate permission level
-        valid_levels = ['perm1', 'perm2', 'perm3', 'perm4', 'perm5', 'perm6', 'perm7', 'perm8', 'perm9', 'owner', 'buyer', 'public', 'everyone']
-        if permission_level not in valid_levels:
-            await ctx.send(f"❌ Niveau de permission invalide. Utilisez: {', '.join(valid_levels)}")
+        Usage:
+        +change <commande> <niveau> - Déplacer commande vers niveau
+        +change reset - Remettre toutes les permissions par défaut
+        """
+        if command_name and command_name.lower() == "reset":
+            # Reset toutes les permissions
+            await self.bot.db.reset_permissions(ctx.guild.id)
+            await self.bot.db.initialize_default_permissions(ctx.guild.id)
+            await ctx.send("✅ **Toutes les permissions ont été remises à leurs valeurs par défaut**")
             return
         
-        await self.bot.db.set_command_permission(ctx.guild.id, command_name, permission_level)
-        await ctx.send(f"✅ Commande `{command_name}` changée vers `{get_permission_level_name(permission_level)}`")
+        if not command_name or not permission_level:
+            await ctx.send("❌ Usage: `+change <commande> <niveau>` ou `+change reset`")
+            return
+        
+        # Valider le niveau de permission
+        valid_levels = ['perm1', 'perm2', 'perm3', 'perm4', 'perm5', 'perm6', 'perm7', 'perm8', 'perm9', 'owner', 'buyer', 'public', 'everyone']
+        if permission_level.lower() not in valid_levels:
+            await ctx.send(f"❌ Niveau de permission invalide.\n💡 Niveaux disponibles: {', '.join(valid_levels)}")
+            return
+        
+        await self.bot.db.set_command_permission(ctx.guild.id, command_name.lower(), permission_level.lower())
+        await ctx.send(f"✅ Commande **{command_name}** déplacée vers **{permission_level}**")
     
     @commands.command(name="changeall")
     @admin_only()
-    async def change_all_permissions(self, ctx, old_level: str, new_level: str):
-        """Move all commands from one permission level to another
-        Usage: +changeall <ancien_niveau> <nouveau_niveau>
-        """
-        old_level = old_level.lower()
-        new_level = new_level.lower()
+    async def change_all_permissions(self, ctx, old_level: str = None, new_level: str = None):
+        """Déplacer toutes les commandes d'un niveau vers un autre CrowBots
         
-        # Validate permission levels
+        Usage: +changeall <ancien_niveau> <nouveau_niveau>
+        Exemple: +changeall perm3 perm4
+        """
+        if not old_level or not new_level:
+            await ctx.send("❌ Usage: `+changeall <ancien_niveau> <nouveau_niveau>`\n💡 Exemple: `+changeall perm3 perm4`")
+            return
+            
+        # Valider les niveaux de permission
         valid_levels = ['perm1', 'perm2', 'perm3', 'perm4', 'perm5', 'perm6', 'perm7', 'perm8', 'perm9', 'owner', 'buyer', 'public', 'everyone']
-        if old_level not in valid_levels or new_level not in valid_levels:
-            await ctx.send(f"❌ Niveaux de permission invalides. Utilisez: {', '.join(valid_levels)}")
+        
+        if old_level.lower() not in valid_levels or new_level.lower() not in valid_levels:
+            await ctx.send(f"❌ Niveaux invalides.\n💡 Niveaux disponibles: {', '.join(valid_levels)}")
             return
         
-        # Get all commands with old permission level
+        # Obtenir toutes les commandes du niveau ancien
         all_perms = await self.bot.db.get_all_command_permissions(ctx.guild.id)
-        commands_to_move = [cmd for cmd, level in all_perms.items() if level == old_level]
+        commands_to_move = [cmd for cmd, level in all_perms.items() if level == old_level.lower()]
         
         if not commands_to_move:
-            await ctx.send(f"❌ Aucune commande trouvée avec le niveau `{get_permission_level_name(old_level)}`")
+            await ctx.send(f"❌ Aucune commande trouvée au niveau **{old_level}**")
             return
         
-        # Move all commands
+        # Déplacer toutes les commandes
         for command_name in commands_to_move:
-            await self.bot.db.set_command_permission(ctx.guild.id, command_name, new_level)
+            await self.bot.db.set_command_permission(ctx.guild.id, command_name, new_level.lower())
         
-        await ctx.send(f"✅ {len(commands_to_move)} commandes déplacées de `{get_permission_level_name(old_level)}` vers `{get_permission_level_name(new_level)}`")
+        await ctx.send(f"✅ **{len(commands_to_move)} commandes** déplacées de **{old_level}** vers **{new_level}**\n"
+                      f"Commandes déplacées: {', '.join(commands_to_move)}")
     
     @commands.command(name="perms")
-    @has_permission()
     async def show_permissions(self, ctx):
-        """Show all permission levels and command assignments for this server"""
+        """Affiche les permissions et rôles associés CrowBots"""
         try:
             # Get permission levels
             permission_levels = await self.bot.db.get_permission_levels(ctx.guild.id)

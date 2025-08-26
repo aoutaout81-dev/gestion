@@ -18,6 +18,8 @@ chdfz gestion est un bot Discord de modération avancée avec système de gestio
 - ✅ **Migration Replit Agent terminée** - Base de données réparée, logs optimisés
 - ✅ **Cogs administration fonctionnel** - Erreurs SQLite corrigées
 - ✅ **Performance optimisée** - Plus de spam de logs, traitement messages efficace
+- ✅ **SYSTÈME CROWBOTS COMPLET** - Intégration finale dans administration.py
+- ✅ **Structure unifiée** - Plus de cogs en doublon, tout centralisé
 
 ## Project Architecture
 
@@ -62,14 +64,16 @@ chdfz gestion est un bot Discord de modération avancée avec système de gestio
 - **Niveaux spéciaux** : owner, buyer, public, everyone
 - **Attribution flexible** : par rôle ou utilisateur individuel
 
-#### Commandes de Configuration des Permissions
-- `set perm <niveau> <@role/@user>` - Assigner niveau à un rôle/utilisateur
-- `del perm <niveau> <@role/@user>` - Retirer niveau d'un rôle/utilisateur
-- `change <commande> <niveau>` - Changer le niveau d'une commande
-- `changeall <ancien> <nouveau>` - Déplacer toutes les commandes d'un niveau
-- `perms` - Afficher la configuration des permissions
-- `helpall` - Voir toutes les commandes par niveau
-- `resetperms` - Remettre les permissions par défaut
+#### Commandes de Configuration des Permissions (CrowBots Compatible)
+- `+set perm <niveau> <@role/@user>` - Assigner niveau à un rôle/utilisateur
+- `+set perm <commande> <@role/@user>` - Permission spécifique pour commande
+- `+del perm <niveau> <@role/@user>` - Retirer niveau d'un rôle/utilisateur
+- `+change <commande> <niveau>` - Changer le niveau d'une commande
+- `+change reset` - Remettre toutes les permissions par défaut
+- `+changeall <ancien> <nouveau>` - Déplacer toutes les commandes d'un niveau
+- `+perms` - Afficher la configuration des permissions
+- `+helpall` - Voir toutes les commandes par niveau
+- `+clearperms` - Supprimer toutes les permissions (avec confirmation)
 
 #### Permissions par Défaut
 - **Perm 1** : clear, warn, mute (modération basique)
@@ -104,3 +108,5 @@ Les commandes suivantes ont maintenant des réponses simplifiées sans embeds :
 ✅ Base de données réparée et synchronisée
 ✅ Performance optimisée (plus de logs excessifs)
 ✅ Connecté à Discord avec 2 guilds actives
+✅ **Système CrowBots 100% fonctionnel** - Toutes les commandes de la doc implémentées
+✅ **Structure consolidée** - Fini les doublons, architecture propre
