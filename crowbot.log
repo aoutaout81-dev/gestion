@@ -2883,3 +2883,14 @@ sqlite3.OperationalError: no such column: permission_level
 2025-08-26 15:05:22,452 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 3c61e6ef5be672a4eb26439cf8dc5b5d).
 2025-08-26 15:05:24,503 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
 2025-08-26 15:05:24,504 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 15:07:32,882 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 15:07:32,884 - discord.client - INFO - logging in using static token
+2025-08-26 15:07:33,350 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 15:07:33,353 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 15:07:33,354 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 15:07:33,355 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 15:07:33,358 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 15:07:33,360 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 15:07:33,841 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 39480c07b445577f8277cb3a7257296b).
+2025-08-26 15:07:35,864 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 15:07:35,865 - chdfz gestion - INFO - Bot is in 2 guilds

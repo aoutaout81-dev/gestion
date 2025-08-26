@@ -2,13 +2,18 @@ import discord
 from discord.ext import commands
 import asyncio
 from typing import Set
+from collections import deque
+import time
 
 class Triggers(commands.Cog):
     """Gestion des triggers automatiques et protections de salons"""
 
     def __init__(self, bot):
         self.bot = bot
-        self._processed_messages = set()
+        # Utiliser un cache LRU avec timestamp pour éviter les doublons
+        self._processed_messages = {}
+        self._cache_max_size = 500
+        self._cache_cleanup_interval = 300  # 5 minutes
         
         # Configuration des salons spéciaux
         self.config = {
@@ -33,18 +38,34 @@ class Triggers(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
         """Event déclenché à chaque nouveau message"""
-        # Ignorer les bots et webhooks sans logging excessif
+        # Ignorer les bots et webhooks
         if message.author.bot or message.webhook_id:
             return
 
-        # Éviter les doublons avec cache intelligent
-        if message.id in self._processed_messages:
-            return
-        self._processed_messages.add(message.id)
+        # Éviter les doublons avec cache intelligent et timestamp
+        current_time = time.time()
+        message_key = f"{message.id}_{message.channel.id}"
         
-        # Nettoyer le cache périodiquement
-        if len(self._processed_messages) > 1000:
-            self._processed_messages.clear()
+        # Vérifier si le message a déjà été traité récemment (dans les 60 dernières secondes)
+        if message_key in self._processed_messages:
+            if current_time - self._processed_messages[message_key] < 60:
+                return
+        
+        # Marquer le message comme traité
+        self._processed_messages[message_key] = current_time
+        
+        # Nettoyer le cache de manière intelligente (supprimer les anciens)
+        if len(self._processed_messages) > self._cache_max_size:
+            # Supprimer les entrées plus anciennes que 5 minutes
+            cutoff_time = current_time - self._cache_cleanup_interval
+            old_keys = [k for k, t in self._processed_messages.items() if t < cutoff_time]
+            for key in old_keys:
+                del self._processed_messages[key]
+            
+            # Si encore trop d'entrées, garder seulement les plus récentes
+            if len(self._processed_messages) > self._cache_max_size:
+                sorted_items = sorted(self._processed_messages.items(), key=lambda x: x[1], reverse=True)
+                self._processed_messages = dict(sorted_items[:self._cache_max_size])
 
         # Traiter les différentes fonctionnalités
         await self.handle_blocked_channels(message)
