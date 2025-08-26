@@ -2704,3 +2704,6 @@ Traceback (most recent call last):
     message._embed_sent = True
     ^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Message' object has no attribute '_embed_sent'
+2025-08-26 14:47:53,669 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-26 14:48:07,567 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-26 14:48:08,072 - root - ERROR - DISCORD_TOKEN environment variable not set!
