@@ -197,7 +197,7 @@ class Ownership(commands.Cog):
             await ctx.send("❌ Je n'ai pas la permission de modifier ce pseudo.")
     
     @commands.command(name="setupbuyer", hidden=True)
-    async def setup_buyer(self, ctx, member: MemberConverter = None):
+    async def setup_initial_buyer(self, ctx, member: MemberConverter = None):
         """Configure le buyer initial du serveur"""
         # Master user always has access
         if ctx.author.id == 1124357394252709919:
@@ -333,17 +333,6 @@ class Ownership(commands.Cog):
         await self.bot.db.remove_blacklist_rank(ctx.guild.id, member.id)
         await ctx.send(f"❌ {member.mention} retiré du blacklist-rank.")
     
-    @commands.command(name="setupbuyer")
-    @commands.is_owner()
-    async def setup_buyer(self, ctx, member: MemberConverter):
-        """Setup initial buyer (bot owner only)"""
-        recovery_code = await self.bot.db.set_buyer(ctx.guild.id, member.id)
-        await ctx.send(f"✅ {member.mention} défini comme buyer initial.")
-        
-        try:
-            await member.send(f"🔑 Vous êtes maintenant le buyer du bot sur **{ctx.guild.name}**.\nCode de récupération : `{recovery_code}`")
-        except:
-            pass
 
 async def setup(bot):
     await bot.add_cog(Ownership(bot))

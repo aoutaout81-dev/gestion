@@ -1,37 +1,34 @@
 import discord
 from discord.ext import commands
 import asyncio
+from typing import Set
 
 class Triggers(commands.Cog):
     """Gestion des triggers automatiques et protections de salons"""
 
     def __init__(self, bot):
         self.bot = bot
-
-        # 🔹 Salons protégés (texte interdit hors threads)
-        self.protected_channels = [
-            1402704269458673826,
-            1394459808106676314,
-            1393676148629573807
-        ]
-
-        # 🔹 Salons avec réactions automatiques (uniquement emojis animés)
-        self.react_channels = {
-            1408082781887664201: [
-                "<a:mochi:1408874019788423209>",
-                "<a:refused:1408873542078173245>"
-            ],
-            1393676148629573802: [
-                "<a:mochi:1408874019788423209>",
-                "<a:refused:1408873542078173245>"
-            ]
+        self._processed_messages: Set[int] = set()  # Cache pour éviter les doublons
+        
+        # Configuration des salons (peut être déplacée en BDD si nécessaire)
+        self.config = {
+            "protected_channels": {
+                1402704269458673826,
+                1394459808106676314,
+                1393676148629573807
+            },
+            "react_channels": {
+                1408082781887664201: [
+                    "<a:mochi:1408874019788423209>",
+                    "<a:refused:1408873542078173245>"
+                ],
+                1393676148629573802: [
+                    "<a:mochi:1408874019788423209>",
+                    "<a:refused:1408873542078173245>"
+                ]
+            },
+            "selfie_channel_id": 1393676148629573807
         }
-
-        # 🔹 Salon selfie pour embed automatique
-        self.selfie_channel_id = 1393676148629573807
-
-        # 🔹 Lock pour éviter les doublons
-        self.processed_messages = set()
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
@@ -39,56 +36,63 @@ class Triggers(commands.Cog):
         if message.author.bot or message.webhook_id:
             return
 
-        # Eviter de traiter plusieurs fois le même message
-        if message.id in self.processed_messages:
+        # Éviter de traiter plusieurs fois le même message
+        if message.id in self._processed_messages:
             return
-        self.processed_messages.add(message.id)
+        self._processed_messages.add(message.id)
+        
+        # Nettoyer le cache si trop volumineux
+        if len(self._processed_messages) > 1000:
+            self._processed_messages.clear()
 
-        # Gestion salons protégés
+        # Traitement des différentes fonctionnalités
         await self.handle_blocked_channels(message)
-
-        # Réactions automatiques
         await self.handle_auto_reactions(message)
-
-        # Embed automatique pour selfies
         await self.handle_selfie_embed(message)
 
     async def handle_blocked_channels(self, message: discord.Message):
-        if message.channel.id not in self.protected_channels:
+        if message.channel.id not in self.config["protected_channels"]:
             return
         if isinstance(message.channel, discord.Thread):
             return
-        if message.content and message.content.strip():
-            try:
-                await message.delete()
-                warn_msg = await message.channel.send(
-                    "⚠️ Les messages texte ne sont autorisés que dans les threads !"
-                )
-                await asyncio.sleep(5)
-                await warn_msg.delete()
-            except Exception as e:
-                print(f"[❌] Erreur handle_blocked_channels: {e}")
+        if not (message.content and message.content.strip()):
+            return
+            
+        try:
+            await message.delete()
+            await message.channel.send(
+                "⚠️ Les messages texte ne sont autorisés que dans les threads !",
+                delete_after=5
+            )
+        except (discord.NotFound, discord.Forbidden):
+            pass  # Message déjà supprimé ou pas de permissions
+        except Exception as e:
+            print(f"[❌] Erreur protection salon: {e}")
 
     async def handle_auto_reactions(self, message: discord.Message):
-        if message.channel.id not in self.react_channels:
+        """Ajoute des réactions automatiques sur certains salons"""
+        if message.channel.id not in self.config["react_channels"]:
             return
-        for emoji in self.react_channels[message.channel.id]:
-            if emoji.startswith("<a:"):
-                try:
-                    await message.add_reaction(emoji)
-                except Exception as e:
-                    print(f"[❌] Erreur en ajoutant {emoji}: {e}")
+            
+        for emoji in self.config["react_channels"][message.channel.id]:
+            try:
+                await message.add_reaction(emoji)
+            except (discord.NotFound, discord.Forbidden):
+                pass  # Message supprimé ou pas de permissions
+            except Exception as e:
+                print(f"[❌] Erreur réaction {emoji}: {e}")
 
     async def handle_selfie_embed(self, message: discord.Message):
-        if message.channel.id != self.selfie_channel_id:
+        """Crée un embed automatique pour les selfies avec règles"""
+        if message.channel.id != self.config["selfie_channel_id"]:
             return
         if not message.attachments:
             return
 
-        # Eviter d’envoyer plusieurs embeds pour le même message
-        if getattr(message, "_embed_sent", False):
+        # Vérifier que c'est une image
+        attachment = message.attachments[0]
+        if not any(attachment.filename.lower().endswith(ext) for ext in ('.jpg', '.jpeg', '.png', '.gif', '.webp')):
             return
-        message._embed_sent = True
 
         embed = discord.Embed(
             title="<:rules:1407738894480314480> __**Règles du serveur**__",
@@ -96,12 +100,12 @@ class Triggers(commands.Cog):
             color=0x0055FF
         )
         embed.set_thumbnail(url="https://giffiles.alphacoders.com/219/219182.gif")
-        embed.set_image(url=message.attachments[0].url)
+        embed.set_image(url=attachment.url)
 
         try:
             await message.channel.send(embed=embed)
         except Exception as e:
-            print(f"[❌] Erreur handle_selfie_embed: {e}")
+            print(f"[❌] Erreur embed selfie: {e}")
 
 async def setup(bot):
     await bot.add_cog(Triggers(bot))

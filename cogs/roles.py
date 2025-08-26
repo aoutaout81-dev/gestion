@@ -44,12 +44,7 @@ class RoleManagement(commands.Cog):
         
         # Vérifier si le membre a déjà le rôle
         if role in member.roles:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description=f"**{member}** possède déjà le rôle {role.mention}.",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ **{member}** possède déjà le rôle {role.mention}.")
             return
         
         try:
@@ -64,19 +59,9 @@ class RoleManagement(commands.Cog):
             await ctx.send(f"✅ Rôle {role.mention} ajouté à **{member}**.")
             
         except discord.Forbidden:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description="Je n'ai pas la permission d'ajouter ce rôle.",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send("❌ Je n'ai pas la permission d'ajouter ce rôle.")
         except Exception as e:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description=f"Échec de l'ajout du rôle : {str(e)}",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ Échec de l'ajout du rôle : {str(e)}")
     
     @commands.command(name="delrole", aliases=["removerole"])
     @has_permission()
@@ -112,12 +97,7 @@ class RoleManagement(commands.Cog):
         
         # Vérifier si le membre a le rôle
         if role not in member.roles:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description=f"**{member}** ne possède pas le rôle {role.mention}.",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ **{member}** ne possède pas le rôle {role.mention}.")
             return
         
         try:
@@ -132,19 +112,9 @@ class RoleManagement(commands.Cog):
             await ctx.send(f"✅ Rôle {role.mention} retiré de **{member}**.")
             
         except discord.Forbidden:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description="Je n'ai pas la permission de retirer ce rôle.",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send("❌ Je n'ai pas la permission de retirer ce rôle.")
         except Exception as e:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description=f"Échec du retrait du rôle : {str(e)}",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ Échec du retrait du rôle : {str(e)}")
     
     @commands.command(name="createrole")
     @has_permission()

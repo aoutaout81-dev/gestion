@@ -308,12 +308,7 @@ class Administration(commands.Cog):
             await self.bot.db.reset_permissions(ctx.guild.id)
             await self.bot.db.initialize_default_permissions(ctx.guild.id)
             
-            embed = discord.Embed(
-                title="Permissions Reset",
-                description="Toutes les permissions ont été remises par défaut.",
-                color=self.bot.config.success_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send("✅ Permissions remises par défaut.")
             
             # Log the action
             await self.bot.db.log_moderation_action(
@@ -322,12 +317,7 @@ class Administration(commands.Cog):
             )
             
         except Exception as e:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description=f"Erreur lors de la remise à zéro des permissions: {str(e)}",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ Erreur lors de la remise à zéro : {str(e)}")
     
     @commands.command(name="clearperm")
     @admin_only()
@@ -341,22 +331,12 @@ class Administration(commands.Cog):
         """Set cooldown for a command"""
         try:
             if seconds < 0:
-                embed = discord.Embed(
-                    title="❌ Invalid Cooldown",
-                    description="Le délai doit être un nombre positif.",
-                    color=self.bot.config.error_color
-                )
-                await ctx.send(embed=embed)
+                await ctx.send("❌ Le délai doit être un nombre positif.")
                 return
             
             await self.bot.db.set_command_cooldown(ctx.guild.id, command_name.lower(), seconds)
             
-            embed = discord.Embed(
-                title="Cooldown Set",
-                description=f"Délai de `{command_name}` défini à `{seconds}` secondes",
-                color=self.bot.config.success_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"✅ Délai de `{command_name}` défini à `{seconds}` secondes")
             
             # Log the action
             await self.bot.db.log_moderation_action(
@@ -365,12 +345,7 @@ class Administration(commands.Cog):
             )
             
         except Exception as e:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description=f"Erreur lors de la définition du délai: {str(e)}",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ Erreur lors de la définition du délai: {str(e)}")
     
     @commands.command(name="settings")
     @has_permission()
@@ -417,22 +392,12 @@ class Administration(commands.Cog):
         """Change the bot prefix for this server"""
         try:
             if len(new_prefix) > 5:
-                embed = discord.Embed(
-                    title="❌ Invalid Prefix",
-                    description="Le préfixe doit faire 5 caractères ou moins.",
-                    color=self.bot.config.error_color
-                )
-                await ctx.send(embed=embed)
+                await ctx.send("❌ Le préfixe doit faire 5 caractères ou moins.")
                 return
             
             await self.bot.db.set_guild_prefix(ctx.guild.id, new_prefix)
             
-            embed = discord.Embed(
-                title="Préfixe Changé",
-                description=f"Nouveau préfixe: `{new_prefix}`",
-                color=self.bot.config.success_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"✅ Nouveau préfixe: `{new_prefix}`")
             
             # Log the action
             await self.bot.db.log_moderation_action(
@@ -441,12 +406,7 @@ class Administration(commands.Cog):
             )
             
         except Exception as e:
-            embed = discord.Embed(
-                title="❌ Erreur",
-                description=f"Erreur lors du changement de préfixe: {str(e)}",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ Erreur lors du changement de préfixe: {str(e)}")
 
 async def setup(bot):
     await bot.add_cog(Administration(bot))

@@ -542,12 +542,7 @@ class Moderation(commands.Cog):
     async def clear_messages(self, ctx, amount: int):
         """Clear a specified number of messages"""
         if amount <= 0 or amount > 100:
-            embed = discord.Embed(
-                title="Erreur",
-                description="Le nombre doit être entre 1 et 100.",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send("❌ Le nombre doit être entre 1 et 100.")
             return
         
         try:
@@ -563,19 +558,9 @@ class Moderation(commands.Cog):
             await ctx.send(f"🧹 {len(deleted) - 1} messages supprimés.", delete_after=5)
             
         except discord.Forbidden:
-            embed = discord.Embed(
-                title="Erreur",
-                description="I don't have permission to delete messages.",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send("❌ Je n'ai pas la permission de supprimer les messages.")
         except Exception as e:
-            embed = discord.Embed(
-                title="Erreur",
-                description=f"Erreur lors de la suppression des messages: {str(e)}",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ Erreur lors de la suppression des messages: {str(e)}")
     
     @commands.command(name="lock")
     @has_permission()
@@ -593,28 +578,12 @@ class Moderation(commands.Cog):
                 ctx.guild.id, 0, ctx.author.id, "lock", f"Locked channel {channel.name}"
             )
             
-            embed = discord.Embed(
-                title="🔒 Channel Locked",
-                description=f"{channel.mention} has been locked.",
-                color=self.bot.config.success_color
-            )
-            embed.add_field(name="Moderator", value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.send(f"🔒 Salon {channel.mention} verrouillé.")
             
         except discord.Forbidden:
-            embed = discord.Embed(
-                title="Erreur",
-                description="I don't have permission to manage this channel.",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send("❌ Je n'ai pas la permission de gérer ce salon.")
         except Exception as e:
-            embed = discord.Embed(
-                title="Erreur",
-                description=f"Erreur lors du verrouillage du salon: {str(e)}",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ Erreur lors du verrouillage: {str(e)}")
     
     @commands.command(name="unlock")
     @has_permission()
@@ -632,28 +601,12 @@ class Moderation(commands.Cog):
                 ctx.guild.id, 0, ctx.author.id, "unlock", f"Unlocked channel {channel.name}"
             )
             
-            embed = discord.Embed(
-                title="🔓 Channel Unlocked",
-                description=f"{channel.mention} has been unlocked.",
-                color=self.bot.config.success_color
-            )
-            embed.add_field(name="Moderator", value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.send(f"🔓 Salon {channel.mention} déverrouillé.")
             
         except discord.Forbidden:
-            embed = discord.Embed(
-                title="Erreur",
-                description="I don't have permission to manage this channel.",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send("❌ Je n'ai pas la permission de gérer ce salon.")
         except Exception as e:
-            embed = discord.Embed(
-                title="Erreur",
-                description=f"Erreur lors du déverrouillage du salon: {str(e)}",
-                color=self.bot.config.error_color
-            )
-            await ctx.send(embed=embed)
+            await ctx.send(f"❌ Erreur lors du déverrouillage: {str(e)}")
 
 async def setup(bot):
     await bot.add_cog(Moderation(bot))

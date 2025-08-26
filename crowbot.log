@@ -2610,3 +2610,13 @@ sqlite3.OperationalError: no such column: permission_level
 2025-08-26 14:04:24,503 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4e870fb77671e7d8c28c216f45e8fe62).
 2025-08-26 14:04:26,529 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
 2025-08-26 14:04:26,530 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:09:45,230 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 54, in on_message
+    """Gère les salons protégés où seuls les threads sont autorisés"""
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/cogs/triggers.py", line 91, in handle_selfie_embed
+    return
+AttributeError: 'Message' object has no attribute '_embed_sent'
