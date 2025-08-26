@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-import asyncio
 from typing import Set
 
 class Triggers(commands.Cog):
@@ -8,9 +7,9 @@ class Triggers(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self._processed_messages: Set[int] = set()  # Cache pour éviter les doublons
+        self._processed_messages: Set[int] = set()
         
-        # Configuration des salons (peut être déplacée en BDD si nécessaire)
+        # Configuration des salons spéciaux
         self.config = {
             "protected_channels": {
                 1402704269458673826,
@@ -32,20 +31,21 @@ class Triggers(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
+        """Event déclenché à chaque nouveau message"""
         # Ignorer les bots et webhooks
         if message.author.bot or message.webhook_id:
             return
 
-        # Éviter de traiter plusieurs fois le même message
+        # Éviter les doublons avec cache intelligent
         if message.id in self._processed_messages:
             return
         self._processed_messages.add(message.id)
         
-        # Nettoyer le cache si trop volumineux
+        # Nettoyer le cache périodiquement
         if len(self._processed_messages) > 1000:
             self._processed_messages.clear()
 
-        # Traitement des différentes fonctionnalités
+        # Traiter les différentes fonctionnalités
         await self.handle_blocked_channels(message)
         await self.handle_auto_reactions(message)
         await self.handle_selfie_embed(message)
@@ -66,7 +66,7 @@ class Triggers(commands.Cog):
                 delete_after=5
             )
         except (discord.NotFound, discord.Forbidden):
-            pass  # Message déjà supprimé ou pas de permissions
+            pass
         except Exception as e:
             print(f"[❌] Erreur protection salon: {e}")
 
@@ -75,26 +75,29 @@ class Triggers(commands.Cog):
         if message.channel.id not in self.config["react_channels"]:
             return
             
-        for emoji in self.config["react_channels"][message.channel.id]:
+        emojis = self.config["react_channels"][message.channel.id]
+        for emoji in emojis:
             try:
                 await message.add_reaction(emoji)
             except (discord.NotFound, discord.Forbidden):
-                pass  # Message supprimé ou pas de permissions
+                pass
             except Exception as e:
                 print(f"[❌] Erreur réaction {emoji}: {e}")
 
     async def handle_selfie_embed(self, message: discord.Message):
-        """Crée un embed automatique pour les selfies avec règles"""
+        """Crée un embed automatique pour les selfies avec règles du serveur"""
         if message.channel.id != self.config["selfie_channel_id"]:
             return
         if not message.attachments:
             return
 
-        # Vérifier que c'est une image
+        # Vérifier que c'est un fichier image
         attachment = message.attachments[0]
-        if not any(attachment.filename.lower().endswith(ext) for ext in ('.jpg', '.jpeg', '.png', '.gif', '.webp')):
+        image_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
+        if not any(attachment.filename.lower().endswith(ext) for ext in image_extensions):
             return
 
+        # Créer l'embed avec les règles du serveur
         embed = discord.Embed(
             title="<:rules:1407738894480314480> __**Règles du serveur**__",
             description="__**Les trolls seront sanctionnés immédiatement**__, veuillez *respecter les autres* pour que notre communauté reste agréable et conviviale.",

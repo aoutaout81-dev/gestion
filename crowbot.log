@@ -2620,3 +2620,45 @@ Traceback (most recent call last):
   File "/home/runner/workspace/cogs/triggers.py", line 91, in handle_selfie_embed
     return
 AttributeError: 'Message' object has no attribute '_embed_sent'
+2025-08-26 14:13:04,025 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 54, in on_message
+    """Gère les salons protégés où seuls les threads sont autorisés"""
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/cogs/triggers.py", line 91, in handle_selfie_embed
+    return
+AttributeError: 'Message' object has no attribute '_embed_sent'
+2025-08-26 14:15:00,515 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 54, in on_message
+    """Gère les salons protégés où seuls les threads sont autorisés"""
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/cogs/triggers.py", line 91, in handle_selfie_embed
+    return
+AttributeError: 'Message' object has no attribute '_embed_sent'
+2025-08-26 14:15:40,980 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:15:40,981 - discord.client - INFO - logging in using static token
+2025-08-26 14:15:41,381 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:15:41,391 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:15:41,396 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:15:41,397 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:15:41,399 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:15:41,406 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:15:41,638 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4b1b0a4f1e2578777a714d37d9ec9dbe).
+2025-08-26 14:15:43,668 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:15:43,669 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:16:19,597 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:16:19,597 - discord.client - INFO - logging in using static token
+2025-08-26 14:16:19,908 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:16:19,910 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:16:19,911 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:16:19,912 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:16:19,912 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:16:19,914 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:16:20,113 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ac2cd74f989210527da61242bbc1587b).
+2025-08-26 14:16:22,151 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:16:22,162 - chdfz gestion - INFO - Bot is in 2 guilds
