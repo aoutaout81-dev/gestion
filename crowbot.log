@@ -2482,3 +2482,14 @@ AttributeError: 'Database' object has no attribute 'get_guild_prefix'
 2025-08-26 10:15:43,715 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: e6670d4dbefb9514ded9a9d19583318f).
 2025-08-26 10:15:45,746 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
 2025-08-26 10:15:45,746 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 10:17:59,392 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 10:17:59,392 - discord.client - INFO - logging in using static token
+2025-08-26 10:17:59,805 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 10:17:59,813 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 10:17:59,816 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 10:17:59,819 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 10:17:59,820 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 10:17:59,824 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 10:18:00,150 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 0c0f8e7cd9d3f224d33e959f4f8aed83).
+2025-08-26 10:18:02,168 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 10:18:02,168 - chdfz gestion - INFO - Bot is in 2 guilds

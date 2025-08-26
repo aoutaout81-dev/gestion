@@ -8,11 +8,11 @@ class HelpView(discord.ui.View):
         super().__init__(timeout=180)
         self.bot = bot
         
-    @discord.ui.button(label="🎛️ Administration", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Administration", style=discord.ButtonStyle.primary)
     async def admin_help(self, interaction: discord.Interaction, button: discord.ui.Button):
         """Affiche l'aide pour les commandes d'administration"""
         embed = discord.Embed(
-            title="🎛️ Commandes d'Administration",
+            title="Commandes d'Administration",
             description="Gestion des permissions et configuration du bot",
             color=self.bot.config.embed_color
         )
@@ -34,14 +34,14 @@ class HelpView(discord.ui.View):
                 inline=False
             )
         
-        embed.set_footer(text="⚠️ Ces commandes nécessitent les permissions d'administrateur")
+        embed.set_footer(text="Ces commandes nécessitent les permissions d'administrateur")
         await interaction.response.edit_message(embed=embed, view=self)
     
-    @discord.ui.button(label="🔨 Modération", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Modération", style=discord.ButtonStyle.primary)
     async def moderation_help(self, interaction: discord.Interaction, button: discord.ui.Button):
         """Affiche l'aide pour les commandes de modération"""
         embed = discord.Embed(
-            title="🔨 Commandes de Modération",
+            title="Commandes de Modération",
             description="Gestion et modération des membres",
             color=self.bot.config.embed_color
         )
@@ -73,14 +73,14 @@ class HelpView(discord.ui.View):
             inline=False
         )
         
-        embed.set_footer(text="💡 Vous pouvez utiliser les noms d'utilisateurs au lieu de les mentionner")
+        embed.set_footer(text="Vous pouvez utiliser les noms d'utilisateurs au lieu de les mentionner")
         await interaction.response.edit_message(embed=embed, view=self)
     
-    @discord.ui.button(label="👑 Rôles", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Rôles", style=discord.ButtonStyle.primary)
     async def roles_help(self, interaction: discord.Interaction, button: discord.ui.Button):
         """Affiche l'aide pour les commandes de gestion des rôles"""
         embed = discord.Embed(
-            title="👑 Commandes de Gestion des Rôles",
+            title="Commandes de Gestion des Rôles",
             description="Gestion complète des rôles du serveur",
             color=self.bot.config.embed_color
         )
@@ -162,14 +162,14 @@ class HelpView(discord.ui.View):
             inline=False
         )
         
-        embed.set_footer(text="🦮 Le système de laisse surveille automatiquement les pseudos")
+        embed.set_footer(text="Le système de laisse surveille automatiquement les pseudos")
         await interaction.response.edit_message(embed=embed, view=self)
     
-    @discord.ui.button(label="🏠 Menu Principal", style=discord.ButtonStyle.secondary, row=1)
+    @discord.ui.button(label="Menu Principal", style=discord.ButtonStyle.secondary, row=1)
     async def main_menu(self, interaction: discord.Interaction, button: discord.ui.Button):
         """Retourne au menu principal"""
         embed = discord.Embed(
-            title="📚 CrowBot Gestion V2 - Aide Interactive",
+            title="chdfz gestion - Aide Interactive",
             description="Choisissez une catégorie avec les boutons ci-dessous pour voir les commandes disponibles.",
             color=self.bot.config.embed_color
         )
@@ -224,7 +224,7 @@ class HelpCommand(commands.Cog):
         """Affiche le menu d'aide interactif"""
         
         embed = discord.Embed(
-            title="📚 CrowBot Gestion V2 - Aide Interactive",
+            title="chdfz gestion - Aide Interactive",
             description="Choisissez une catégorie avec les boutons ci-dessous pour voir les commandes disponibles.",
             color=self.bot.config.embed_color
         )
