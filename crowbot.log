@@ -2896,3 +2896,14 @@ sqlite3.OperationalError: no such column: permission_level
 2025-08-26 15:07:35,865 - chdfz gestion - INFO - Bot is in 2 guilds
 2025-08-26 15:24:37,085 - root - ERROR - DISCORD_TOKEN environment variable not set!
 2025-08-26 15:24:51,478 - root - ERROR - DISCORD_TOKEN environment variable not set!
+2025-08-26 15:31:42,265 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 15:31:42,265 - discord.client - INFO - logging in using static token
+2025-08-26 15:31:42,618 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 15:31:42,624 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 15:31:42,629 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 15:31:42,631 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 15:31:42,633 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 15:31:42,639 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 15:31:42,905 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 8cb3061fc781004490d36823d9f62d96).
+2025-08-26 15:31:44,947 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 15:31:44,948 - chdfz gestion - INFO - Bot is in 2 guilds

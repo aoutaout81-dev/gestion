@@ -18,12 +18,14 @@ class HelpView(discord.ui.View):
         )
         
         commands_list = [
-            ("setperm", "Attribuer une permission", "`+setperm <commande> <rôle>`"),
-            ("unsetperm", "Retirer une permission", "`+unsetperm <commande> <rôle>`"),
-            ("perms", "Voir toutes les permissions", "`+perms`"),
-            ("resetperms", "Réinitialiser les permissions", "`+resetperms`"),
-            ("cooldown", "Définir un délai d'attente", "`+cooldown <commande> <secondes>`"),
-            ("settings", "Voir les paramètres du serveur", "`+settings`"),
+            ("set perm", "Attribuer niveau permission", "`+set perm <niveau> <@rôle/@user>`"),
+            ("del perm", "Retirer niveau permission", "`+del perm <niveau> <@rôle/@user>`"),
+            ("change", "Changer niveau commande", "`+change <commande> <niveau>`"),
+            ("changeall", "Déplacer toutes commandes", "`+changeall <ancien> <nouveau>`"),
+            ("clearperms", "Supprimer toutes permissions", "`+clearperms`"),
+            ("addrole", "Ajouter rôle", "`+addrole <@user> <@rôle>`"),
+            ("delrole", "Retirer rôle", "`+delrole <@user> <@rôle>`"),
+            ("massrole", "Rôle à tous humains", "`+massrole <@rôle>`"),
             ("prefix", "Changer le préfixe", "`+prefix <nouveau_préfixe>`")
         ]
         
@@ -53,6 +55,7 @@ class HelpView(discord.ui.View):
             ("mute", "Rendre muet un membre", "`+mute <membre> [durée] [raison]`"),
             ("unmute", "Enlever le mute", "`+unmute <membre>`"),
             ("warn", "Avertir un membre", "`+warn <membre> [raison]`"),
+            ("delwarn", "Supprimer avertissement", "`+delwarn <@user> <ID>`"),
             ("infractions", "Voir l'historique d'un membre", "`+infractions <membre>`"),
             ("mutelist", "Liste des membres mués", "`+mutelist`"),
             ("clear", "Supprimer des messages", "`+clear <nombre>`"),
@@ -163,6 +166,59 @@ class HelpView(discord.ui.View):
         )
         
         embed.set_footer(text="Le système de laisse surveille automatiquement les pseudos")
+        await interaction.response.edit_message(embed=embed, view=self)
+    
+    @discord.ui.button(label="🔢 Permissions", style=discord.ButtonStyle.success)
+    async def permissions_help(self, interaction: discord.Interaction, button: discord.ui.Button):
+        """Affiche l'aide pour le système de permissions"""
+        embed = discord.Embed(
+            title="🔢 Système de Permissions",
+            description="Gestion hiérarchique des permissions CrowBots",
+            color=self.bot.config.embed_color
+        )
+        
+        embed.add_field(
+            name="📊 Niveaux de Permissions",
+            value=(
+                "**Perm 1** : Modération basique (clear, warn, mute)\n"
+                "**Perm 2** : Modération complète (kick, ban, unban, etc.)\n"
+                "**Perm 3** : Administration (setperm, addrole, etc.)\n"
+                "**Perm 4-9** : Niveaux personnalisables\n"
+                "**Owner** : Commandes ownership\n"
+                "**Buyer** : Propriétaire unique\n"
+                "**Public** : Commandes d'info\n"
+                "**Everyone** : Accessible à tous"
+            ),
+            inline=False
+        )
+        
+        embed.add_field(
+            name="⚙️ Configuration",
+            value=(
+                "`+set perm <niveau> <@rôle/@user>` - Assigner niveau\n"
+                "`+del perm <niveau> <@rôle/@user>` - Retirer niveau\n"
+                "`+change <commande> <niveau>` - Changer niveau commande\n"
+                "`+change reset` - Reset toutes permissions\n"
+                "`+changeall <ancien> <nouveau>` - Déplacer commandes\n"
+                "`+perms` - Voir configuration\n"
+                "`+helpall` - Toutes commandes par niveau\n"
+                "`+clearperms` - Supprimer tout (avec confirmation)"
+            ),
+            inline=False
+        )
+        
+        embed.add_field(
+            name="🔄 Fonctionnement",
+            value=(
+                "• **Hiérarchique** : perm2 peut utiliser perm1 et perm2\n"
+                "• **Attribution flexible** : par rôle ou utilisateur\n"
+                "• **Spécifique** : permission pour commande précise\n"
+                "• **Compatible CrowBots** : système standard"
+            ),
+            inline=False
+        )
+        
+        embed.set_footer(text="Un utilisateur avec perm3 peut utiliser toutes les commandes perm1-3")
         await interaction.response.edit_message(embed=embed, view=self)
     
     @discord.ui.button(label="Menu Principal", style=discord.ButtonStyle.secondary, row=1)

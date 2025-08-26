@@ -33,6 +33,7 @@ class Database:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     guild_id INTEGER,
                     level INTEGER,
+                    level_name TEXT,
                     role_id INTEGER,
                     user_id INTEGER,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -520,7 +521,7 @@ class Database:
             conn.close()
     
     # Permission Level methods
-    async def set_permission_level(self, guild_id: int, level: int, role_id: int = None, user_id: int = None):
+    async def set_permission_level(self, guild_id: int, level: int, role_id: Optional[int] = None, user_id: Optional[int] = None):
         """Set a role or user to a permission level"""
         level_name = f"perm{level}"
         async with self._lock:
@@ -529,21 +530,20 @@ class Database:
             
             if role_id:
                 cursor.execute('''
-                    INSERT OR REPLACE INTO permission_levels (guild_id, level_name, role_id) 
-                    VALUES (?, ?, ?)
-                ''', (guild_id, level_name, role_id))
+                    INSERT OR REPLACE INTO permission_levels (guild_id, level, level_name, role_id) 
+                    VALUES (?, ?, ?, ?)
+                ''', (guild_id, level, level_name, role_id))
             elif user_id:
                 cursor.execute('''
-                    INSERT OR REPLACE INTO permission_levels (guild_id, level_name, user_id) 
-                    VALUES (?, ?, ?)
-                ''', (guild_id, level_name, user_id))
+                    INSERT OR REPLACE INTO permission_levels (guild_id, level, level_name, user_id) 
+                    VALUES (?, ?, ?, ?)
+                ''', (guild_id, level, level_name, user_id))
             
             conn.commit()
             conn.close()
     
-    async def remove_permission_level(self, guild_id: int, level: int, role_id: int = None, user_id: int = None):
+    async def remove_permission_level(self, guild_id: int, level: int, role_id: Optional[int] = None, user_id: Optional[int] = None):
         """Remove a role or user from a permission level"""
-        level_name = f"perm{level}"
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
@@ -551,13 +551,13 @@ class Database:
             if role_id:
                 cursor.execute('''
                     DELETE FROM permission_levels 
-                    WHERE guild_id = ? AND level_name = ? AND role_id = ?
-                ''', (guild_id, level_name, role_id))
+                    WHERE guild_id = ? AND level = ? AND role_id = ?
+                ''', (guild_id, level, role_id))
             elif user_id:
                 cursor.execute('''
                     DELETE FROM permission_levels 
-                    WHERE guild_id = ? AND level_name = ? AND user_id = ?
-                ''', (guild_id, level_name, user_id))
+                    WHERE guild_id = ? AND level = ? AND user_id = ?
+                ''', (guild_id, level, user_id))
             
             conn.commit()
             conn.close()
@@ -569,28 +569,22 @@ class Database:
             cursor = conn.cursor()
             
             cursor.execute('''
-                SELECT level_name, role_id, user_id FROM permission_levels 
+                SELECT level, role_id, user_id FROM permission_levels 
                 WHERE guild_id = ?
-                ORDER BY level_name
+                ORDER BY level
             ''', (guild_id,))
             
             results = cursor.fetchall()
             conn.close()
             
             levels = {}
-            for level_name, role_id, user_id in results:
-                # Convert "perm1" to 1
-                if level_name.startswith('perm'):
-                    try:
-                        level_num = int(level_name[4:])
-                        if level_num not in levels:
-                            levels[level_num] = {'roles': [], 'users': []}
-                        if role_id:
-                            levels[level_num]['roles'].append(role_id)
-                        if user_id:
-                            levels[level_num]['users'].append(user_id)
-                    except ValueError:
-                        pass
+            for level, role_id, user_id in results:
+                if level not in levels:
+                    levels[level] = {'roles': [], 'users': []}
+                if role_id:
+                    levels[level]['roles'].append(role_id)
+                if user_id:
+                    levels[level]['users'].append(user_id)
             
             return levels
     
@@ -608,7 +602,7 @@ class Database:
             conn.commit()
             conn.close()
     
-    async def set_command_specific_permission(self, guild_id: int, command_name: str, role_id: int = None, user_id: int = None):
+    async def set_command_specific_permission(self, guild_id: int, command_name: str, role_id: Optional[int] = None, user_id: Optional[int] = None):
         """Set specific permission for a command to a role or user"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
@@ -628,7 +622,7 @@ class Database:
             conn.commit()
             conn.close()
     
-    async def remove_command_specific_permission(self, guild_id: int, command_name: str, role_id: int = None, user_id: int = None):
+    async def remove_command_specific_permission(self, guild_id: int, command_name: str, role_id: Optional[int] = None, user_id: Optional[int] = None):
         """Remove specific permission for a command from a role or user"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
@@ -648,7 +642,7 @@ class Database:
             conn.commit()
             conn.close()
     
-    async def get_command_permission_level(self, guild_id: int, command_name: str) -> str:
+    async def get_command_permission_level(self, guild_id: int, command_name: str) -> Optional[str]:
         """Get permission level for a command"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
@@ -828,32 +822,31 @@ class Database:
             result = cursor.fetchone()
             conn.close()
             
-            return float(result[0]) if result else None
+            return result[0] if result else None
     
-    async def update_last_command_use(self, guild_id: int, user_id: int, command_name: str):
-        """Update last command use time"""
+    async def update_command_usage(self, guild_id: int, user_id: int, command_name: str):
+        """Update last usage time for a command"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             cursor.execute('''
                 INSERT OR REPLACE INTO command_usage (guild_id, user_id, command_name, last_used) 
-                VALUES (?, ?, ?, ?)
-            ''', (guild_id, user_id, command_name, time.time()))
+                VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            ''', (guild_id, user_id, command_name))
             
             conn.commit()
             conn.close()
     
     # Infraction methods
-    async def add_infraction(self, guild_id: int, user_id: int, moderator_id: int, 
-                           infraction_type: str, reason: Optional[str] = None, duration: Optional[int] = None):
+    async def add_infraction(self, guild_id: int, user_id: int, moderator_id: int, infraction_type: str, reason: str, duration: Optional[int] = None):
         """Add an infraction"""
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             cursor.execute('''
-                INSERT INTO infractions (guild_id, user_id, moderator_id, infraction_type, reason, duration) 
+                INSERT INTO infractions (guild_id, user_id, moderator_id, infraction_type, reason, duration)
                 VALUES (?, ?, ?, ?, ?, ?)
             ''', (guild_id, user_id, moderator_id, infraction_type, reason, duration))
             
@@ -867,9 +860,9 @@ class Database:
             cursor = conn.cursor()
             
             cursor.execute('''
-                SELECT infraction_type, reason, duration, created_at, moderator_id 
+                SELECT id, moderator_id, infraction_type, reason, duration, active, created_at
                 FROM infractions 
-                WHERE guild_id = ? AND user_id = ? 
+                WHERE guild_id = ? AND user_id = ?
                 ORDER BY created_at DESC
             ''', (guild_id, user_id))
             
@@ -879,14 +872,257 @@ class Database:
             infractions = []
             for result in results:
                 infractions.append({
-                    'type': result[0],
-                    'reason': result[1],
-                    'duration': result[2],
-                    'created_at': result[3],
-                    'moderator_id': result[4]
+                    'id': result[0],
+                    'moderator_id': result[1],
+                    'infraction_type': result[2],
+                    'reason': result[3],
+                    'duration': result[4],
+                    'active': result[5],
+                    'created_at': result[6]
                 })
             
             return infractions
+    
+    async def delete_infraction(self, infraction_id: int):
+        """Delete an infraction"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('DELETE FROM infractions WHERE id = ?', (infraction_id,))
+            
+            conn.commit()
+            conn.close()
+    
+    async def deactivate_infraction(self, infraction_id: int):
+        """Deactivate an infraction"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('UPDATE infractions SET active = 0 WHERE id = ?', (infraction_id,))
+            
+            conn.commit()
+            conn.close()
+    
+    # Mute methods
+    async def add_mute(self, guild_id: int, user_id: int, moderator_id: int, reason: str, muted_until: Optional[str] = None):
+        """Add a muted user"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                INSERT OR REPLACE INTO muted_users (guild_id, user_id, moderator_id, reason, muted_until)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (guild_id, user_id, moderator_id, reason, muted_until))
+            
+            conn.commit()
+            conn.close()
+    
+    async def remove_mute(self, guild_id: int, user_id: int):
+        """Remove a muted user"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('DELETE FROM muted_users WHERE guild_id = ? AND user_id = ?', (guild_id, user_id))
+            
+            conn.commit()
+            conn.close()
+    
+    async def is_muted(self, guild_id: int, user_id: int) -> bool:
+        """Check if user is muted"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                SELECT 1 FROM muted_users WHERE guild_id = ? AND user_id = ?
+            ''', (guild_id, user_id))
+            
+            result = cursor.fetchone()
+            conn.close()
+            
+            return bool(result)
+    
+    async def get_muted_users(self, guild_id: int) -> List[Dict[str, Any]]:
+        """Get all muted users for a guild"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                SELECT user_id, moderator_id, reason, muted_until
+                FROM muted_users WHERE guild_id = ?
+            ''', (guild_id,))
+            
+            results = cursor.fetchall()
+            conn.close()
+            
+            muted_users = []
+            for result in results:
+                muted_users.append({
+                    'user_id': result[0],
+                    'moderator_id': result[1],
+                    'reason': result[2],
+                    'muted_until': result[3]
+                })
+            
+            return muted_users
+    
+    # Logging methods
+    async def log_moderation_action(self, guild_id: int, user_id: int, moderator_id: int, action: str, reason: str, details: str = None):
+        """Log a moderation action"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                INSERT INTO moderation_logs (guild_id, user_id, moderator_id, action, reason, details)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (guild_id, user_id, moderator_id, action, reason, details))
+            
+            conn.commit()
+            conn.close()
+    
+    # Guild settings helpers
+    async def get_mute_role_id(self, guild_id: int) -> Optional[int]:
+        """Get mute role ID for a guild"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('SELECT mute_role_id FROM guild_settings WHERE guild_id = ?', (guild_id,))
+            
+            result = cursor.fetchone()
+            conn.close()
+            
+            return result[0] if result and result[0] else None
+    
+    async def set_mute_role_id(self, guild_id: int, role_id: int):
+        """Set mute role ID for a guild"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                INSERT OR REPLACE INTO guild_settings (guild_id, mute_role_id) 
+                VALUES (?, ?)
+            ''', (guild_id, role_id))
+            
+            conn.commit()
+            conn.close()
+    
+    async def get_log_channel_id(self, guild_id: int) -> Optional[int]:
+        """Get log channel ID for a guild"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('SELECT log_channel_id FROM guild_settings WHERE guild_id = ?', (guild_id,))
+            
+            result = cursor.fetchone()
+            conn.close()
+            
+            return result[0] if result and result[0] else None
+    
+    async def set_log_channel_id(self, guild_id: int, channel_id: int):
+        """Set log channel ID for a guild"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                INSERT OR REPLACE INTO guild_settings (guild_id, log_channel_id) 
+                VALUES (?, ?)
+            ''', (guild_id, channel_id))
+            
+            conn.commit()
+            conn.close()
+    
+    # Permission helper methods
+    async def has_permission_level(self, guild_id: int, user_id: int, required_level: int, user_roles: List[int]) -> bool:
+        """Check if user has required permission level"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            # Check user-specific permissions
+            cursor.execute('''
+                SELECT level FROM permission_levels 
+                WHERE guild_id = ? AND user_id = ? AND level <= ?
+                ORDER BY level ASC LIMIT 1
+            ''', (guild_id, user_id, required_level))
+            
+            result = cursor.fetchone()
+            if result:
+                conn.close()
+                return True
+            
+            # Check role-based permissions
+            if user_roles:
+                placeholders = ','.join(['?'] * len(user_roles))
+                cursor.execute(f'''
+                    SELECT level FROM permission_levels 
+                    WHERE guild_id = ? AND role_id IN ({placeholders}) AND level <= ?
+                    ORDER BY level ASC LIMIT 1
+                ''', [guild_id] + user_roles + [required_level])
+                
+                result = cursor.fetchone()
+                conn.close()
+                return bool(result)
+            
+            conn.close()
+            return False
+    
+    async def has_command_permission(self, guild_id: int, user_id: int, command_name: str, user_roles: List[int]) -> bool:
+        """Check if user has permission for a specific command"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            # Check command-specific permissions first
+            cursor.execute('''
+                SELECT 1 FROM command_specific_permissions 
+                WHERE guild_id = ? AND command_name = ? AND user_id = ?
+            ''', (guild_id, command_name, user_id))
+            
+            result = cursor.fetchone()
+            if result:
+                conn.close()
+                return True
+            
+            # Check role-based command permissions
+            if user_roles:
+                placeholders = ','.join(['?'] * len(user_roles))
+                cursor.execute(f'''
+                    SELECT 1 FROM command_specific_permissions 
+                    WHERE guild_id = ? AND command_name = ? AND role_id IN ({placeholders})
+                ''', [guild_id, command_name] + user_roles)
+                
+                result = cursor.fetchone()
+                if result:
+                    conn.close()
+                    return True
+            
+            conn.close()
+            return False
+    
+    # Additional database methods needed by cogs
+    async def update_last_command_use(self, guild_id: int, user_id: int, command_name: str):
+        """Update last command use time"""
+        async with self._lock:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                INSERT OR REPLACE INTO command_usage (guild_id, user_id, command_name, last_used) 
+                VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            ''', (guild_id, user_id, command_name))
+            
+            conn.commit()
+            conn.close()
     
     async def get_user_warnings(self, guild_id: int, user_id: int) -> List[Dict[str, Any]]:
         """Get all warnings for a user with IDs"""
@@ -941,98 +1177,5 @@ class Database:
             conn.commit()
             conn.close()
             return True
-    
-    # Mute methods
-    async def add_mute(self, guild_id: int, user_id: int, muted_until: Optional[float], 
-                      reason: str, moderator_id: int):
-        """Add a mute"""
-        async with self._lock:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                INSERT OR REPLACE INTO muted_users (guild_id, user_id, muted_until, reason, moderator_id) 
-                VALUES (?, ?, ?, ?, ?)
-            ''', (guild_id, user_id, muted_until, reason, moderator_id))
-            
-            conn.commit()
-            conn.close()
-    
-    async def remove_mute(self, guild_id: int, user_id: int):
-        """Remove a mute"""
-        async with self._lock:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                DELETE FROM muted_users WHERE guild_id = ? AND user_id = ?
-            ''', (guild_id, user_id))
-            
-            conn.commit()
-            conn.close()
-    
-    async def get_muted_users(self, guild_id: int) -> List[Dict[str, Any]]:
-        """Get all muted users in a guild"""
-        async with self._lock:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                SELECT user_id, muted_until, reason, moderator_id 
-                FROM muted_users WHERE guild_id = ?
-            ''', (guild_id,))
-            
-            results = cursor.fetchall()
-            conn.close()
-            
-            muted_users = []
-            for result in results:
-                muted_users.append({
-                    'user_id': result[0],
-                    'muted_until': result[1],
-                    'reason': result[2],
-                    'moderator_id': result[3]
-                })
-            
-            return muted_users
-    
-    async def is_user_muted(self, guild_id: int, user_id: int) -> bool:
-        """Check if user is muted"""
-        async with self._lock:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                SELECT muted_until FROM muted_users 
-                WHERE guild_id = ? AND user_id = ?
-            ''', (guild_id, user_id))
-            
-            result = cursor.fetchone()
-            conn.close()
-            
-            if not result:
-                return False
-            
-            muted_until = result[0]
-            if muted_until and float(muted_until) < time.time():
-                await self.remove_mute(guild_id, user_id)
-                return False
-            
-            return True
-    
-    # Logging methods
-    async def log_moderation_action(self, guild_id: int, user_id: int, moderator_id: int, 
-                                  action: str, reason: Optional[str] = None, details: Optional[str] = None):
-        """Log a moderation action"""
-        async with self._lock:
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            
-            cursor.execute('''
-                INSERT INTO moderation_logs (guild_id, user_id, moderator_id, action, reason, details) 
-                VALUES (?, ?, ?, ?, ?, ?)
-            ''', (guild_id, user_id, moderator_id, action, reason, details))
-            
-            conn.commit()
-            conn.close()
+
     
