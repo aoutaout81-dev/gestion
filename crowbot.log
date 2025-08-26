@@ -2673,3 +2673,34 @@ AttributeError: 'Message' object has no attribute '_embed_sent'
 2025-08-26 14:26:36,960 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: d38b6bd0877631669bb98c55302d0d8a).
 2025-08-26 14:26:39,002 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
 2025-08-26 14:26:39,002 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:29:30,655 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:29:30,655 - discord.client - INFO - logging in using static token
+2025-08-26 14:29:31,316 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:29:31,320 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:29:31,321 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:29:31,322 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:29:31,324 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:29:31,327 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:29:31,690 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: dc94366ba82b63075982f1bc03044ad0).
+2025-08-26 14:29:33,722 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:29:33,723 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:30:00,892 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 54, in on_message
+    await self.handle_selfie_embed(message)
+  File "/home/runner/workspace/cogs/triggers.py", line 91, in handle_selfie_embed
+    message._embed_sent = True
+    ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Message' object has no attribute '_embed_sent'
+2025-08-26 14:30:11,199 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/runner/workspace/cogs/triggers.py", line 54, in on_message
+    await self.handle_selfie_embed(message)
+  File "/home/runner/workspace/cogs/triggers.py", line 91, in handle_selfie_embed
+    message._embed_sent = True
+    ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Message' object has no attribute '_embed_sent'
