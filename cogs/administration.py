@@ -28,7 +28,7 @@ class Administration(commands.Cog):
         except Exception as e:
             embed = discord.Embed(
                 title="❌ Error",
-                description=f"Failed to set permission: {str(e)}",
+                description=f"Erreur lors de la définition de la permission: {str(e)}",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -51,7 +51,7 @@ class Administration(commands.Cog):
         except Exception as e:
             embed = discord.Embed(
                 title="❌ Error",
-                description=f"Failed to remove permission: {str(e)}",
+                description=f"Erreur lors de la suppression de la permission: {str(e)}",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -141,7 +141,7 @@ class Administration(commands.Cog):
         except Exception as e:
             embed = discord.Embed(
                 title="❌ Error",
-                description=f"Failed to retrieve permissions: {str(e)}",
+                description=f"Erreur lors de la récupération des permissions: {str(e)}",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -155,7 +155,7 @@ class Administration(commands.Cog):
             
             embed = discord.Embed(
                 title="Permissions Reset",
-                description="All command permissions have been reset to default.",
+                description="Toutes les permissions de commandes ont été remises par défaut.",
                 color=self.bot.config.success_color
             )
             await ctx.send(embed=embed)
@@ -169,7 +169,7 @@ class Administration(commands.Cog):
         except Exception as e:
             embed = discord.Embed(
                 title="❌ Error",
-                description=f"Failed to reset permissions: {str(e)}",
+                description=f"Erreur lors de la remise à zéro des permissions: {str(e)}",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -181,7 +181,7 @@ class Administration(commands.Cog):
         if seconds < 0:
             embed = discord.Embed(
                 title="❌ Invalid Cooldown",
-                description="Cooldown must be a positive number.",
+                description="Le délai doit être un nombre positif.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -206,7 +206,7 @@ class Administration(commands.Cog):
         except Exception as e:
             embed = discord.Embed(
                 title="❌ Error",
-                description=f"Failed to set cooldown: {str(e)}",
+                description=f"Erreur lors de la définition du délai: {str(e)}",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -256,7 +256,7 @@ class Administration(commands.Cog):
         except Exception as e:
             embed = discord.Embed(
                 title="❌ Error",
-                description=f"Failed to retrieve settings: {str(e)}",
+                description=f"Erreur lors de la récupération des paramètres: {str(e)}",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -268,7 +268,7 @@ class Administration(commands.Cog):
         if len(new_prefix) > 5:
             embed = discord.Embed(
                 title="❌ Invalid Prefix",
-                description="Prefix must be 5 characters or less.",
+                description="Le préfixe doit faire 5 caractères ou moins.",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
@@ -293,7 +293,7 @@ class Administration(commands.Cog):
         except Exception as e:
             embed = discord.Embed(
                 title="❌ Error",
-                description=f"Failed to change prefix: {str(e)}",
+                description=f"Erreur lors du changement de préfixe: {str(e)}",
                 color=self.bot.config.error_color
             )
             await ctx.send(embed=embed)
