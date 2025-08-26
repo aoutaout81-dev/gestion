@@ -2662,3 +2662,14 @@ AttributeError: 'Message' object has no attribute '_embed_sent'
 2025-08-26 14:16:20,113 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ac2cd74f989210527da61242bbc1587b).
 2025-08-26 14:16:22,151 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
 2025-08-26 14:16:22,162 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 14:26:36,330 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 14:26:36,331 - discord.client - INFO - logging in using static token
+2025-08-26 14:26:36,681 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 14:26:36,684 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 14:26:36,685 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 14:26:36,686 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 14:26:36,690 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 14:26:36,693 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 14:26:36,960 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: d38b6bd0877631669bb98c55302d0d8a).
+2025-08-26 14:26:39,002 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 14:26:39,002 - chdfz gestion - INFO - Bot is in 2 guilds
