@@ -86,16 +86,30 @@ class Triggers(commands.Cog):
 
     async def handle_selfie_embed(self, message: discord.Message):
         """Crée un embed automatique pour les selfies avec règles du serveur"""
+        print(f"[🔍] handle_selfie_embed appelé - Channel ID: {message.channel.id}, Expected: {self.config['selfie_channel_id']}")
+        
         if message.channel.id != self.config["selfie_channel_id"]:
+            print(f"[❌] Mauvais salon - Channel: {message.channel.id}, Expected: {self.config['selfie_channel_id']}")
             return
+        
+        print(f"[✅] Bon salon selfie détecté!")
+        
         if not message.attachments:
+            print(f"[❌] Aucune pièce jointe trouvée")
             return
+
+        print(f"[✅] {len(message.attachments)} pièce(s) jointe(s) trouvée(s)")
 
         # Vérifier que c'est un fichier image
         attachment = message.attachments[0]
         image_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
+        print(f"[🔍] Vérification fichier: {attachment.filename}")
+        
         if not any(attachment.filename.lower().endswith(ext) for ext in image_extensions):
+            print(f"[❌] Fichier n'est pas une image: {attachment.filename}")
             return
+
+        print(f"[✅] Image valide détectée: {attachment.filename}")
 
         # Créer l'embed avec les règles du serveur
         embed = discord.Embed(
@@ -106,10 +120,14 @@ class Triggers(commands.Cog):
         embed.set_thumbnail(url="https://giffiles.alphacoders.com/219/219182.gif")
         embed.set_image(url=attachment.url)
 
+        print(f"[🔍] Tentative d'envoi de l'embed...")
         try:
-            await message.channel.send(embed=embed)
+            sent_message = await message.channel.send(embed=embed)
+            print(f"[✅] Embed envoyé avec succès! Message ID: {sent_message.id}")
         except Exception as e:
             print(f"[❌] Erreur embed selfie: {e}")
+            import traceback
+            traceback.print_exc()
 
 async def setup(bot):
     await bot.add_cog(Triggers(bot))
