@@ -405,5 +405,39 @@ class Administration(commands.Cog):
         except Exception as e:
             await ctx.send(f"❌ Erreur lors du changement de préfixe: {str(e)}")
 
+    async def _parse_target(self, ctx, target):
+        """Parse un target (role ou user) et retourne role_id et user_id"""
+        role_id = None
+        user_id = None
+        
+        if target.startswith('<@&') and target.endswith('>'):
+            # Role mention
+            try:
+                role_id = int(target[3:-1])
+                role = ctx.guild.get_role(role_id)
+                if not role:
+                    await ctx.send("❌ Rôle introuvable")
+                    return None, None
+            except ValueError:
+                await ctx.send("❌ Format de rôle invalide")
+                return None, None
+                
+        elif target.startswith('<@') and target.endswith('>'):
+            # User mention
+            try:
+                user_id = int(target[2:-1].replace('!', ''))
+                user = ctx.guild.get_member(user_id)
+                if not user:
+                    await ctx.send("❌ Utilisateur introuvable")
+                    return None, None
+            except ValueError:
+                await ctx.send("❌ Format d'utilisateur invalide")
+                return None, None
+        else:
+            await ctx.send("❌ Format invalide. Utilisez @role ou @user")
+            return None, None
+            
+        return role_id, user_id
+
 async def setup(bot):
     await bot.add_cog(Administration(bot))

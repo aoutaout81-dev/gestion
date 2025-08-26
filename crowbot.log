@@ -2871,3 +2871,15 @@ sqlite3.OperationalError: no such column: permission_level
 2025-08-26 15:02:54,626 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 277fb3c1d54d4c4b90368318ce6adeca).
 2025-08-26 15:02:56,649 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
 2025-08-26 15:02:56,649 - chdfz gestion - INFO - Bot is in 2 guilds
+2025-08-26 15:04:55,067 - chdfz gestion - ERROR - Unhandled error in command 'set' by chdfz (1124357394252709919) in Kɪʏᴏʀᴀ ✿: Command raised an exception: AttributeError: 'Administration' object has no attribute '_parse_target'
+2025-08-26 15:05:21,674 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-26 15:05:21,674 - discord.client - INFO - logging in using static token
+2025-08-26 15:05:22,240 - chdfz gestion - INFO - Loaded cog: cogs.administration
+2025-08-26 15:05:22,243 - chdfz gestion - INFO - Loaded cog: cogs.moderation
+2025-08-26 15:05:22,245 - chdfz gestion - INFO - Loaded cog: cogs.roles
+2025-08-26 15:05:22,247 - chdfz gestion - INFO - Loaded cog: cogs.help_interactive
+2025-08-26 15:05:22,247 - chdfz gestion - INFO - Loaded cog: cogs.triggers
+2025-08-26 15:05:22,253 - chdfz gestion - INFO - Loaded cog: cogs.ownership
+2025-08-26 15:05:22,452 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 3c61e6ef5be672a4eb26439cf8dc5b5d).
+2025-08-26 15:05:24,503 - chdfz gestion - INFO - Manon Gestion has connected to Discord!
+2025-08-26 15:05:24,504 - chdfz gestion - INFO - Bot is in 2 guilds
