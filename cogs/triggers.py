@@ -33,16 +33,12 @@ class Triggers(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
         """Event déclenché à chaque nouveau message"""
-        print(f"[📨] Nouveau message reçu - ID: {message.id}, Channel: {message.channel.id}, Author: {message.author}")
-        
-        # Ignorer les bots et webhooks
+        # Ignorer les bots et webhooks sans logging excessif
         if message.author.bot or message.webhook_id:
-            print(f"[🤖] Message ignoré - Bot: {message.author.bot}, Webhook: {message.webhook_id}")
             return
 
         # Éviter les doublons avec cache intelligent
         if message.id in self._processed_messages:
-            print(f"[🔁] Message déjà traité: {message.id}")
             return
         self._processed_messages.add(message.id)
         
@@ -91,30 +87,19 @@ class Triggers(commands.Cog):
 
     async def handle_selfie_embed(self, message: discord.Message):
         """Crée un embed automatique pour les selfies avec règles du serveur"""
-        print(f"[🔍] handle_selfie_embed appelé - Channel: {message.channel.id}")
-        
+        # Vérifier le salon sans logging excessif
         if message.channel.id != self.config["selfie_channel_id"]:
-            print(f"[❌] Mauvais salon - Channel: {message.channel.id}, Expected: {self.config['selfie_channel_id']}")
             return
-        
-        print(f"[✅] Bon salon selfie détecté!")
         
         if not message.attachments:
-            print(f"[❌] Aucune pièce jointe trouvée")
             return
-
-        print(f"[✅] {len(message.attachments)} pièce(s) jointe(s) trouvée(s)")
 
         # Vérifier que c'est un fichier média (image ou vidéo)
         attachment = message.attachments[0]
         media_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp', '.mp4', '.mov', '.avi', '.mkv', '.webm', '.m4v')
-        print(f"[🔍] Vérification fichier: {attachment.filename}")
         
         if not any(attachment.filename.lower().endswith(ext) for ext in media_extensions):
-            print(f"[❌] Fichier n'est pas un média supporté: {attachment.filename}")
             return
-
-        print(f"[✅] Média valide détecté: {attachment.filename}")
 
         # Créer l'embed avec les règles du serveur
         embed = discord.Embed(
@@ -125,14 +110,11 @@ class Triggers(commands.Cog):
         embed.set_thumbnail(url="https://giffiles.alphacoders.com/219/219182.gif")
         embed.set_image(url=attachment.url)
 
-        print(f"[🔍] Tentative d'envoi de l'embed...")
         try:
-            sent_message = await message.channel.send(embed=embed)
-            print(f"[✅] Embed envoyé avec succès! Message ID: {sent_message.id}")
+            await message.channel.send(embed=embed)
         except Exception as e:
-            print(f"[❌] Erreur embed selfie: {e}")
-            import traceback
-            traceback.print_exc()
+            # Log uniquement les erreurs importantes
+            self.bot.logger.error(f"Erreur lors de l'envoi de l'embed selfie: {e}")
 
 async def setup(bot):
     await bot.add_cog(Triggers(bot))

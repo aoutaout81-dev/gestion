@@ -522,26 +522,28 @@ class Database:
     # Permission Level methods
     async def set_permission_level(self, guild_id: int, level: int, role_id: int = None, user_id: int = None):
         """Set a role or user to a permission level"""
+        level_name = f"perm{level}"
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             if role_id:
                 cursor.execute('''
-                    INSERT OR REPLACE INTO permission_levels (guild_id, level, role_id) 
+                    INSERT OR REPLACE INTO permission_levels (guild_id, level_name, role_id) 
                     VALUES (?, ?, ?)
-                ''', (guild_id, level, role_id))
+                ''', (guild_id, level_name, role_id))
             elif user_id:
                 cursor.execute('''
-                    INSERT OR REPLACE INTO permission_levels (guild_id, level, user_id) 
+                    INSERT OR REPLACE INTO permission_levels (guild_id, level_name, user_id) 
                     VALUES (?, ?, ?)
-                ''', (guild_id, level, user_id))
+                ''', (guild_id, level_name, user_id))
             
             conn.commit()
             conn.close()
     
     async def remove_permission_level(self, guild_id: int, level: int, role_id: int = None, user_id: int = None):
         """Remove a role or user from a permission level"""
+        level_name = f"perm{level}"
         async with self._lock:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
@@ -549,13 +551,13 @@ class Database:
             if role_id:
                 cursor.execute('''
                     DELETE FROM permission_levels 
-                    WHERE guild_id = ? AND level = ? AND role_id = ?
-                ''', (guild_id, level, role_id))
+                    WHERE guild_id = ? AND level_name = ? AND role_id = ?
+                ''', (guild_id, level_name, role_id))
             elif user_id:
                 cursor.execute('''
                     DELETE FROM permission_levels 
-                    WHERE guild_id = ? AND level = ? AND user_id = ?
-                ''', (guild_id, level, user_id))
+                    WHERE guild_id = ? AND level_name = ? AND user_id = ?
+                ''', (guild_id, level_name, user_id))
             
             conn.commit()
             conn.close()
@@ -567,22 +569,28 @@ class Database:
             cursor = conn.cursor()
             
             cursor.execute('''
-                SELECT level, role_id, user_id FROM permission_levels 
+                SELECT level_name, role_id, user_id FROM permission_levels 
                 WHERE guild_id = ?
-                ORDER BY level
+                ORDER BY level_name
             ''', (guild_id,))
             
             results = cursor.fetchall()
             conn.close()
             
             levels = {}
-            for level, role_id, user_id in results:
-                if level not in levels:
-                    levels[level] = {'roles': [], 'users': []}
-                if role_id:
-                    levels[level]['roles'].append(role_id)
-                if user_id:
-                    levels[level]['users'].append(user_id)
+            for level_name, role_id, user_id in results:
+                # Convert "perm1" to 1
+                if level_name.startswith('perm'):
+                    try:
+                        level_num = int(level_name[4:])
+                        if level_num not in levels:
+                            levels[level_num] = {'roles': [], 'users': []}
+                        if role_id:
+                            levels[level_num]['roles'].append(role_id)
+                        if user_id:
+                            levels[level_num]['users'].append(user_id)
+                    except ValueError:
+                        pass
             
             return levels
     
